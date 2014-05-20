@@ -1,7 +1,7 @@
 ﻿// JavaScript Document
 (function () {
 
-    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval, runningInterval;
+    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval, runningInterval, divIndex;
 
     var init = function() {
         setObjects();
@@ -16,6 +16,7 @@
         btnStopp = document.getElementById("btnStopp");
         btnEndreFarge = document.getElementById("btnEndreFarge");
         runningInterval = false;
+        divIndex = 0;
     }
 
     var setEventHandlers = function() {
@@ -45,6 +46,7 @@
     var genererDiv = function() {
         interval = setInterval(function(){
             var nyDiv = document.createElement("div");
+            nyDiv.innerHTML = "<p>" + divIndex++ + "</p>";
             container.appendChild(nyDiv);
         }, (1000/divsPerSec));
     }

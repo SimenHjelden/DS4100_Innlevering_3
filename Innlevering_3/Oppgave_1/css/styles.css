@@ -3,19 +3,21 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
 }
 
 #controlPanel {
 	background-color: #eee;
 	padding: 20px;
+	font-family: sans-serif;
 }
 
 div {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	background-color: #ddd;
 	border: solid 1px #aaa;
 	display: inline-block;
+	padding-top: 5px;
+	text-align: center;
 	margin: 2px;
 }
