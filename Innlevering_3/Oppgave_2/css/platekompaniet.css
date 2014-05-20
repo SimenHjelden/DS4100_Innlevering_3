@@ -16,10 +16,55 @@ body {
 }
 #mainHeader nav#handlekurv {
 	float: right;
+	position: relative;
+	background-image: none;
+	background-color: #f5821e;
+	border-radius: 5px;
+	width: 188px;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+#mainHeader nav#handlekurv>a {
+	background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
+	padding-left: 24px;
+	width: 56px;
+	margin-right: 10px;
+	display: block;
+	height: 26px;
+	color: #ffffff;
+	font-size: 11px;
+	line-height: 26px;
+	text-decoration: none;
+	font-weight: bold;
+	float: left;
+}
+#mainHeader nav#handlekurv>a:nth-of-type(2) {
+	border-left: 1px solid #fac18f;
+	padding-left: 10px;
+	background: url("left_w.png") no-repeat 100% 50%;
+	padding-right: 15px;
 }
 #logo {
 	float: left;
 	width: 216px;
 	background: url('../images/logo.png') no-repeat 0 0;
 	height: 115px;
+	margin-bottom: 20px;
+}
+
+section#innhold {
+	clear: both;
+	background-color: #edf0f5;
+	border: 1px solid #B2C2D9;
+	padding: 10px;
+}
+
+section#hovedInnhold {
+	width: 771px;
+	display: inline-block;
+}
+
+aside#banner {
+	width: 192px;
+
 }
