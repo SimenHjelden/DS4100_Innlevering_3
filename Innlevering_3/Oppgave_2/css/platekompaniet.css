@@ -20,14 +20,6 @@ body {
 #logo {
 	float: left;
 	width: 216px;
-	background: url('../images/logo_sprite.png') no-repeat 0 0;
+	background: url('../images/logo.png') no-repeat 0 0;
 	height: 115px;
-}
-#mainHeader nav#handlekurv ul li {
-	background-image: none;
-	background-color: #f5821e;
-	border-radius: 5px;
-	width: 188px;
-	padding-left: 10px;
-	padding-right: 5px;
 }
