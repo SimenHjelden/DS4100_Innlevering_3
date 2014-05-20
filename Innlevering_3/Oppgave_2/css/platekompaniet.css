@@ -62,18 +62,40 @@ section#innhold {
 section#hovedInnhold {
 	width: 771px;
 	display: inline-block;
+    
 }
 
-section#hovedInnhold h1, section#hovedInnhold p {
+
+section#hovedInnhold article  {
     display:inline-block;
-    margin-left:10px;
+    width:376px;
+    overflow:hidden;
+    margin:0px 0px 5px 0px;
+    background-color:#fff;
+    
 }
 
-section#hovedInnhold img {
+
+section#hovedInnhold article h1, section#hovedInnhold article p {
+    display:inline-block;
+    margin:0px 0px 0px 10px;
+    padding:0px;
+}
+
+section#hovedInnhold article p {
+    font-size:14px;
+    width:260px;
+    float:right;
+    padding-top:10px;
+
+}
+
+section#hovedInnhold article img {
     float:left;
 }
 
 aside#banner {
 	width: 192px;
+    float:right;
 
 }
