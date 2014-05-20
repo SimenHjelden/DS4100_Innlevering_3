@@ -64,6 +64,15 @@ section#hovedInnhold {
 	display: inline-block;
 }
 
+section#hovedInnhold h1, section#hovedInnhold p {
+    display:inline-block;
+    margin-left:10px;
+}
+
+section#hovedInnhold img {
+    float:left;
+}
+
 aside#banner {
 	width: 192px;
 
