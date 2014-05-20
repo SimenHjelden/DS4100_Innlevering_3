@@ -97,10 +97,26 @@ section#hovedInnhold article img {
     float:left;
 }
 
+section#hovedInnhold article .pris {
+        width:76px;
+        height:25px;
+        background-image:url(../images/price-label.gif);
+        margin:15px 1px 0px 10px;
+        float:left;
+    }
+
+    section#hovedInnhold article input[type=button] {
+        width:66px;
+        height:25px;
+        float:left;
+        margin:15px 0px 0px 0px;
+        background-image:url(../images/buy.png);
+        border:none;
+    }
+
 aside#banner {
 	width: 192px;
     display:inline-block;
     vertical-align:top;
     margin-top:25px;
-
 }
