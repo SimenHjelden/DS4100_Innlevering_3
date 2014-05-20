@@ -1,9 +1,7 @@
 ﻿// JavaScript Document
 (function () {
 
-    window.onload = init;
-
-    var container, btnGenerer, btnStopp, btnEndreFarge, count, interval;
+    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval;
 
     function init() {
         setObjects();
@@ -12,7 +10,7 @@
     }
 
     function setObjects() {
-        count = 20;
+        divsPerSec = 20;
         container = document.getElementById("container");
         btnGenerer = document.getElementById("btnGenerer");
         btnStopp = document.getElementById("btnStopp");
@@ -21,21 +19,23 @@
     }
 
     function setEventHandlers() {
-        btnStopp.onclick = stoppInterval;
-        btnGenerer.onclick = startInterval;
-        btnEndreFarge.onclick = endreFarge;
-
+        btnStopp.addEventListener("click", stoppInterval, false);
+        btnGenerer.addEventListener("click", startInterval, false);
+        btnEndreFarge.addEventListener("click", endreFarge, false);
     }
 
     function startInterval() {
+        console.log("start interval");
         interval = setInterval(genererDiv, 1000);
     }
 
     function stoppInterval() {
+        console.log("stop interval");
         clearInterval(interval);
     }
 
     function endreFarge() {
+        console.log("endre farge");
         var divisjonsliste = document.getElementById("container").getElementsByTagName("div");
         for (var i = 0; i < divisjonsliste.length; i++) {
             divisjonsliste[i].style.backgroundColor = "#0F9FFF";
@@ -43,10 +43,12 @@
     }
 
     function genererDiv() {
-        for (var i = 0; i < count; i++) {
+        for (var i = 0; i < divsPerSec; i++) {
             var nyDiv = document.createElement("div");
             container.appendChild(nyDiv);
         }
     }
+
+    window.onload = init;
 
 })();
