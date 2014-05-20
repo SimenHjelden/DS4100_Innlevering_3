@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Snippit</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<section id="pageWrap">
+			<section id="search">
+				<div class="content">
+					<form>
+						<input id="snippetsearchinput" type="text" placeholder="f.eks html snippet" autofocus autocomplete="off">
+					</form>
+				</div>
+			</section>
+			<section id="code">
+				<div id="result">
+					<ul></ul>
+				</div>
+				<div class="content">
+					<h1 id="snippetTitle"></h1>
+					<div id="data">
+						<xmp id="snippet-container"></xmp>
+					</div>
+					<div id="tags">
+						<ul></ul>
+					</div>
+				</div>
+			</section>
+			<section id="demo">
+				<div class="content">
+					<div id="renderedOutput"></div>
+				</div>
+			</section>
+		</section>
+		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
