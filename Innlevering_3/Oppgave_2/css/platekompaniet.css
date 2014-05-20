@@ -65,6 +65,18 @@ section#hovedInnhold {
     
 }
 
+section#hovedInnhold h1 {
+    width:752px;
+    background-image:url(../images/header_bg_prodpage.gif);
+    background-size:cover;
+    padding:3px 0px 0px 9px;
+    color:#fff;
+    font-family:'Century Gothic';
+    font-weight:normal;
+    font-size:16px;
+    
+}
+
 
 section#hovedInnhold article  {
     display:inline-block;
@@ -80,9 +92,19 @@ section#hovedInnhold article  {
 
 section#hovedInnhold article h1, section#hovedInnhold article p {
     font-family:Arial;
+    font-size:16px;
     display:inline-block;
     margin:0px 0px 5px 5px;
     padding:0px;
+    color:#000;
+}
+
+section#hovedInnhold article h1 {
+    font-family:Arial;
+    font-weight:bold;
+    width:auto;
+    display:inline-block;
+    background-image:none;
 }
 
 section#hovedInnhold article p {
