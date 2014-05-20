@@ -1,52 +1,52 @@
 ﻿// JavaScript Document
 (function () {
 
-    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval;
+    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval, runningInterval;
 
-    function init() {
+    var init = function() {
         setObjects();
         setEventHandlers();
 
     }
 
-    function setObjects() {
+    var setObjects = function() {
         divsPerSec = 20;
         container = document.getElementById("container");
         btnGenerer = document.getElementById("btnGenerer");
         btnStopp = document.getElementById("btnStopp");
         btnEndreFarge = document.getElementById("btnEndreFarge");
-
+        runningInterval = false;
     }
 
-    function setEventHandlers() {
+    var setEventHandlers = function() {
         btnStopp.addEventListener("click", stoppInterval, false);
         btnGenerer.addEventListener("click", startInterval, false);
         btnEndreFarge.addEventListener("click", endreFarge, false);
     }
 
-    function startInterval() {
-        console.log("start interval");
-        interval = setInterval(genererDiv, 1000);
+    var startInterval = function() {
+        //console.log("start interval");
+        genererDiv();
     }
 
-    function stoppInterval() {
-        console.log("stop interval");
+    var stoppInterval = function() {
+        //console.log("stop interval");
         clearInterval(interval);
     }
 
-    function endreFarge() {
-        console.log("endre farge");
+    var endreFarge = function() {
+        //console.log("endre farge");
         var divisjonsliste = document.getElementById("container").getElementsByTagName("div");
         for (var i = 0; i < divisjonsliste.length; i++) {
             divisjonsliste[i].style.backgroundColor = "#0F9FFF";
         }
     }
 
-    function genererDiv() {
-        for (var i = 0; i < divsPerSec; i++) {
+    var genererDiv = function() {
+        interval = setInterval(function(){
             var nyDiv = document.createElement("div");
             container.appendChild(nyDiv);
-        }
+        }, (1000/divsPerSec));
     }
 
     window.onload = init;

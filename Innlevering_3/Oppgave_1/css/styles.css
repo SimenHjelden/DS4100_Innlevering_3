@@ -10,3 +10,12 @@
 	background-color: #eee;
 	padding: 20px;
 }
+
+div {
+	width: 20px;
+	height: 20px;
+	background-color: #ddd;
+	border: solid 1px #aaa;
+	display: inline-block;
+	margin: 2px;
+}
