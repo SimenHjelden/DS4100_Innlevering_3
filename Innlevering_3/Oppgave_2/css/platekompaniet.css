@@ -68,11 +68,12 @@ section#hovedInnhold {
 
 section#hovedInnhold article  {
     display:inline-block;
-    width:360px;
+    width:371px;
     overflow:hidden;
-    margin:0px 0px 5px 0px;
+    margin:0px -5px 15px 0px;
     background-color:#fff;
-    padding:10px;
+    padding:10px 0px 5px 10px;
+    min-height:160px;
     
 }
 
@@ -80,36 +81,41 @@ section#hovedInnhold article  {
 section#hovedInnhold article h1, section#hovedInnhold article p {
     font-family:Arial;
     display:inline-block;
-    margin:0px 0px 0px 10px;
+    margin:0px 0px 5px 5px;
     padding:0px;
 }
 
 section#hovedInnhold article p {
     font-size:12px;
-    width:245px;
-    float:right;
+    width:255px;
     padding-top:10px;
 
 }
 
 section#hovedInnhold article img {
-    width:105px;
+    width:108px;
+    height:152px;
     float:left;
 }
 
 section#hovedInnhold article .pris {
         width:76px;
-        height:25px;
+        height:22px;
         background-image:url(../images/price-label.gif);
-        margin:15px 1px 0px 10px;
+        margin:10px 1px 0px 10px;
         float:left;
+        padding:3px 7px 0px 0px;
+        font-size:16px;
+        font-family:Arial;
+        text-align:right;
+        font-weight:bold;
     }
 
     section#hovedInnhold article input[type=button] {
         width:66px;
         height:25px;
         float:left;
-        margin:15px 0px 0px 0px;
+        margin:10px 0px 0px 0px;
         background-image:url(../images/buy.png);
         border:none;
     }
