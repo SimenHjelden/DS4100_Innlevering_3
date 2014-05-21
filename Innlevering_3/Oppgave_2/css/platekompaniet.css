@@ -48,15 +48,16 @@ body {
 }
 
 #mainHeader nav#handlekurv .cart_icon {
-    background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
-    padding:5px 34px 5px 24px;
-    width: 56px;
-    margin-right: 10px;
+   background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
+   padding-left: 24px;
+   padding-right:34px;
+   padding-top:5px;
+   width: 56px;
+   margin-right: 10px;
 }
 
 #mainHeader nav#handlekurv>a.cart_icon.cartOpen {
     background: url("../images/cart_ico_close_open.png") no-repeat 0 4px;
-    padding-right:33px;
 }
 
 #mainHeader nav#handlekurv>a.cart_link {

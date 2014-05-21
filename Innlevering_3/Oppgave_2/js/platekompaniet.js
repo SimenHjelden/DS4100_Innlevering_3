@@ -60,10 +60,7 @@
                 putInCart($(this));
 
                 $("#expandable").css("display", "block");
-                $("#expandable nav a:first-child").click(function () {
-                    console.log("klikk");
-                    $("#expandable").css("display", "none");
-                });
+                cartOpen = true;
             });
         });
     }
