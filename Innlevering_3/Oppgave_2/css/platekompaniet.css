@@ -125,13 +125,13 @@ section#hovedInnhold article .pris {
         font-weight:bold;
     }
 
-    section#hovedInnhold article input[type=button] {
+section#hovedInnhold article .buy {
         width:66px;
         height:25px;
         float:left;
-        margin:10px 0px 0px 0px;
+        margin:-4px 0px 0px 85px;
         background-image:url(../images/buy.png);
-        border:none;
+       
     }
 
 aside#banner {
