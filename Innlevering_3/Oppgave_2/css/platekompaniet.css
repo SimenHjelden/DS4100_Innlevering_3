@@ -23,12 +23,15 @@ body {
 	width: 188px;
 	padding-left: 10px;
 	padding-right: 5px;
+    margin-top: 50px;
 }
 #mainHeader nav#handlekurv>a {
 	background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
 	padding-left: 24px;
 	width: 56px;
 	margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 	display: block;
 	height: 26px;
 	color: #ffffff;
@@ -80,13 +83,19 @@ section#hovedInnhold h1 {
 
 section#hovedInnhold article  {
     display:inline-block;
-    width:371px;
+    width:370px;
     overflow:hidden;
     margin:0px -5px 15px 0px;
     background-color:#fff;
     padding:10px 0px 5px 10px;
     min-height:160px;
-    
+    border: solid 1px #B2C2D9;
+}
+section#hovedInnhold article:nth-child(odd) {
+    border-left: solid 0px #B2C2D9;
+}
+section#hovedInnhold article:nth-child(even) {
+    border-right: solid 0px #B2C2D9;
 }
 
 
@@ -146,5 +155,5 @@ aside#banner {
 	width: 192px;
     display:inline-block;
     vertical-align:top;
-    margin-top:25px;
+    margin-top:0px;
 }
