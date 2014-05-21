@@ -12,8 +12,6 @@
        
     }
 
-  
-
     var getJSON = function () {
         $.ajax({
             url: "../js/movies.json",

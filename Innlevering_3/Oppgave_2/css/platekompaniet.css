@@ -33,10 +33,11 @@ body {
 	padding-right: 5px;
     margin-top: 50px;
 }
-#mainHeader nav#handlekurv>a {
-	
+#mainHeader nav#handlekurv>a.cart_icon {
+
 }
-#mainHeader nav#handlekurv>a:nth-of-type(2) {
+
+#mainHeader nav#handlekurv>a.cart.link {
 	
 }
 
