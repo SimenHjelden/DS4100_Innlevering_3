@@ -1,6 +1,6 @@
 ﻿(function(){
 
-    var komplettJSON, logo, cart = [], cartLink;
+    var komplettJSON, logo, cart = [], cartLink, cartOpen, cartCloseLink;
 
     var init = function() {
         setObjects();
@@ -12,18 +12,36 @@
        komplettJSON = "../js/movies.json";
        logo = $("#logo");
        cartLink = $(".cart_icon");
+       cartOpen = false;
+       cartCloseLink = $(".hideCart");
     }
 
-    var setEventHandlers = function() {
-        logo.click(function(event) {
+    var setEventHandlers = function () {
+        logo.click(function (event) {
             //console.log("logo got clicked");
         });
+
         cartLink.click(function () {
-            $("#expandable").css("display", "block");
-            console.log("expand cart clicked");
-            cartLink.addClass("cartOpen");
+            if (!cartOpen) {
+                $("#expandable").css("display", "block");
+                console.log("expand cart clicked");
+                cartLink.addClass("cartOpen");
+                cartOpen = true;
+            }
+            else {
+                $("#expandable").css("display", "none");
+                cartOpen = false;
+                cartLink.removeClass("cartOpen");
+
+            }
         });
-    }
+      
+        cartCloseLink.click(function () {
+            $("#expandable").css("display", "none");
+            cartLink.removeClass("cartOpen");
+            cartOpen = false;
+         });
+        }
 
     var getJSON = function() {
         $.getJSON( komplettJSON, function(data){
@@ -97,7 +115,7 @@
         cart.count = 0;
         $.each(cart, function(i, item){
             $("#cartContent").append("<div><img src='"+item.img+"' alt='"+item.title+"' />"
-                + "<h2>"+item.title+"</h2><p>"+cart[i].count+"x</p><a class='removeItem'>Slett</a></div>");
+                + "<h2>"+item.title+"</h2></br><p>Antall: "+cart[i].count+"x</p><a class='removeItem'></a></div>");
             cart.count += item.count;
         });
         $(".cart_icon").html("X (<span>" + cart.count + "</span>)");

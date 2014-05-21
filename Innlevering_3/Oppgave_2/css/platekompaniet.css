@@ -47,15 +47,16 @@ body {
    
 }
 
-#mainHeader nav#handlekurv>a.cart_icon {
+#mainHeader nav#handlekurv .cart_icon {
     background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
     padding:5px 34px 5px 24px;
     width: 56px;
     margin-right: 10px;
 }
 
-#mainHeader nav#handlekurv>a.cart_icon .cartOpen {
-    background: url("cart_ico_close_open.png") no-repeat 0 4px;
+#mainHeader nav#handlekurv>a.cart_icon.cartOpen {
+    background: url("../images/cart_ico_close_open.png") no-repeat 0 4px;
+    padding-right:33px;
 }
 
 #mainHeader nav#handlekurv>a.cart_link {
@@ -90,7 +91,6 @@ body {
 #expandable nav {
     margin-top: 1px;
     border-top: 1px solid #bfbfbf;
-     padding:10px 0px 10px 0px;    
 }
 
 #expandable nav a.hideCart {
@@ -132,6 +132,9 @@ padding-right: 20px;
 
 #cartContent div p {
     border:none;
+    display: inline-block;
+    padding: 0px 0px 0px 5px;
+    font-weight:normal;
 }
 
 #cartContent img {
@@ -143,11 +146,13 @@ padding-right: 20px;
 }
 
 .removeItem {
-    float:right;
-    margin-right:5px;
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    background: url("../images/trash.png") no-repeat center center;
+    display: block;
+    width: 11px;
+    height: 22px;
+    bottom: 0;
+    right: 0;
 }
 
 #mainHeader nav .removeItem {
