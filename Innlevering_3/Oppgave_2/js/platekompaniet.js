@@ -82,7 +82,11 @@
             if(!found) {
                 console.log("Looks like you don't got this movie in your cart, lets add it!");
                 console.log(title + " added!\n");
-                cart.push({"movieId" : id, "title" : title, "img" : url, "count" : 1});
+                var price = 0;
+                $.getJSON( komplettJSON, function(data){
+                    price = getPrice(data.movies[id].priceCat);
+                });
+                cart.push({"movieId" : id, "title" : title, "img" : url, "count" : 1, "price" : price});
             }
         }
         updateCart();
@@ -96,8 +100,13 @@
         $("#cartContent").html("");
         cart.count = 0;
         $.each(cart, function(i, item){
-            $("#cartContent").append("<div><img src='"+item.img+"' alt='"+item.title+"' />"
-                + "<h2>"+item.title+"</h2><p>"+cart[i].count+"x</p><a class='removeItem'>Slett</a></div>");
+            $("#cartContent").append(
+                "<div>"
+                    +"<img src='"+item.img+"' alt='"+item.title+"' />"
+                    + "<h2>"+item.title+"</h2><p class='movieCount'>"+cart[i].count+"x</p>"
+                    +"<p class='price'>"+(cart[i].count * cart[i].price)+"NOK</p>"
+                    +"<a class='removeItem'>Slett</a>"
+                +"</div>");
             cart.count += item.count;
         });
         $(".cart_icon").html("X (<span>" + cart.count + "</span>)");
