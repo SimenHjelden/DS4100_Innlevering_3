@@ -1,25 +1,30 @@
-﻿{ "movies": [
+﻿{ 
+"movies": [
 {
 "Title": "The World's End", 
 "Description": "I komedien The World's End gjenforenes fem ungdomsvenner for å fullføre den episke pub-til-pub-runden de ikke kom seg gjennom for 20 år siden - og i samme slengen redde menneskeheten.", 
-"imageSrc": "images/worlds-end.jpg"
+"imageSrc": "images/worlds-end.jpg",
+"priceCat": "A"
 },
 
 {
 "Title": "Homefront", 
 "Description": "Jason Statham og James Franco spiller hovedrollene i denne actionthrilleren om en DEA-agent som har fått nok og flytter til en avsidesliggende by. Det han ikke vet er at byen styres av en hensynsløs narkobaron", 
-"imageSrc": "images/homefront.jpg"
+"imageSrc": "images/homefront.jpg",
+"priceCat": "A"
 },
 
 {
 "Title": "The Grandmaster", 
 "Description": "Jason Statham og James Franco spiller hovedrollene i denne actionthrilleren om en DEA-agent som har fått nok og flytter til en avsidesliggende by. Det han ikke vet er at byen styres av en hensynsløs narkobaron", 
-"imageSrc": "images/the-grandmaster.jpg"
+"imageSrc": "images/the-grandmaster.jpg",
+"priceCat": "B"
 },
 
 {
 "Title": "Machete Kills", 
-"Description": "Robert Rodriguez' Machete er tilbake. I hovedrollen som den machetesvingende vigilanten finner vi Danny Trejo, ellers er filmen spekket med stjerner som Mel Gibson, Charlie Sheen, Sofía Vergara og Antonio Bandera", 
-"imageSrc": "images/machete-kills.jpg"
+"Description": "Robert Rodriguez' Machete er tilbake. I hovedrollen som den machetesvingende vigilanten finner vi Danny Trejo, ellers er filmen spekket med stjerner som Mel Gibson, Charlie Sheen, Sofía Vergara og Antonio Banderas.", 
+"imageSrc": "images/machete-kills.jpg",
+"priceCat": "B"
 }
 ]}

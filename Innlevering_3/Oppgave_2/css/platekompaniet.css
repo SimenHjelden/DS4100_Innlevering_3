@@ -66,7 +66,7 @@ section#hovedInnhold h1 {
 
 section#hovedInnhold article  {
     display:inline-block;
-    width:370px;
+    width:372px;
     overflow:hidden;
     margin:0px -5px 15px 0px;
     background-color:#fff;
@@ -112,7 +112,7 @@ section#hovedInnhold article img {
     float:left;
 }
 
-section#hovedInnhold article .pris {
+section#hovedInnhold article .price {
         width:76px;
         height:23px;
         background-image:url(../images/price-label.gif);
@@ -124,6 +124,12 @@ section#hovedInnhold article .pris {
         text-align:right;
         font-weight:bold;
     }
+
+.price .cents {
+    font-size: 10px;
+    vertical-align: top;
+    padding-left: 2px;
+}
 
 section#hovedInnhold article .buy {
         width:66px;
