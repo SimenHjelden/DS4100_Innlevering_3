@@ -33,20 +33,21 @@
                 );
             });
             $(".buy").click(function(){
-                putInCart($(this).closest('article').children('h1'), this.id);
+                putInCart($(this).closest('article').children('h1'), this.id, $(this).closest('article').children('img').src);
             });
         });
     }
 
-    var putInCart = function (title, id) {
+    var putInCart = function (title, id, imgUrl) {
         var title = title.html();
         var movieId = id.substring(7);
-        console.log("movie id: " + movieId + " is called '" + title + "'");
 
+        console.log("movie id: " + movieId + " is called '" + title + "'");
+        console.log(imgUrl);
         //Add clicked movie to cart, and update cartMenu
         cart.push(movieId);
         updateCartCount();
-        $("#cartContent").append("<div><h2>"+title+"</h2><p></p><a class='delFromCart'>Slett</a></div>");
+        $("#cartContent").append("<div>"+img+"<h2>"+title+"</h2><p></p><a class='delFromCart'>Slett</a></div>");
         $(".delFromCart").click(function(){
             delFromChart(this);
         });
