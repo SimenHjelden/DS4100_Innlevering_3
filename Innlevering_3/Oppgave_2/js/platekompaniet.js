@@ -1,14 +1,15 @@
 ﻿(function(){
 
-    var logo, cart = [];
+    var komplettJSON, logo, cart = [];
 
     var init = function() {
-        getJSON();
         setObjects();
+        getJSON();
         setEventHandlers();
     }
 
     var setObjects = function() {
+       komplettJSON = "../js/movies.json";
        logo = $("#logo");
     }
 
@@ -16,45 +17,50 @@
         logo.click(function(event) {
             console.log("logo got clicked");
         });
-        
     }
 
     var getJSON = function() {
-        $.ajax({
-            url: "../js/movies.json",
-            dataType: "json",
-            success: function (data) {
-                $.each(data.movies, function (i, item) {
-                    $("section#hovedInnhold").append(
-                        "<article>"
-                        + "<img src='../" + item.imageSrc + "'/>"
-                        + "<h1>" + item.Title + "</h1>"
-                        + "<p>" + item.Description + "</p>"
-                        + "<div class='price'>"+ getPrice(item.priceCat)+ "</div>"
-                        + "<img id='movieId"+ i +"'' src='../images/buy.png' alt='buy' class='buy' />" //onclick='putInCart(" + i + ");'
-                        + "</article>"
-                       );
-                });
-                $(".buy").click(function(){
-                    putInCart(this.id);
-                });
-            } 
+        $.getJSON( komplettJSON, function(data){
+            $.each(data.movies, function(i, item) {
+                $("section#hovedInnhold").append(
+                    "<article>"
+                    + "<img src='../" + item.imageSrc + "'/>"
+                    + "<h1>" + item.Title + "</h1>"
+                    + "<p>" + item.Description + "</p>"
+                    + "<div class='price'>"+ getPrice(item.priceCat)+ "</div>"
+                    + "<img id='movieId"+ i +"'' src='../images/buy.png' alt='buy' class='buy' />"
+                    + "</article>"
+                );
+            });
+            $(".buy").click(function(){
+                putInCart($(this).closest('article').children('h1'), this.id);
+            });
         });
     }
 
-    var putInCart = function (element) {
-        var movieId = element.substring(7);
-        console.log("Movie id in JSON: " + movieId);
-        //cart.push(movieId);
-        $(".cart_icon").html("x (<span>"+ cart.length +"</span>)");
-        $("#expandable div").append("<h2>"+getMovieName(movieId)+"</h2><p></p><a href='#'>Slett</a>");
-        //console.log(cart);
+    var putInCart = function (title, id) {
+        var title = title.html();
+        var movieId = id.substring(7);
+        console.log("movie id: " + movieId + " is called '" + title + "'");
+
+        //Add clicked movie to cart, and update cartMenu
+        cart.push(movieId);
+        updateCartCount();
+        $("#cartContent").append("<div><h2>"+title+"</h2><p></p><a class='delFromCart'>Slett</a></div>");
+        $(".delFromCart").click(function(){
+            delFromChart(this);
+        });
     }
 
-    var getMovieName = function (movieId) {
-        $.getJSON('../js/movies.json', function(data) {
-            return data.movies;
-        });
+    var updateCartCount = function() {
+        return $(".cart_icon").html("x (<span>"+ cart.length +"</span>)");
+    }
+
+    var delFromChart = function(element) {
+        console.log("delete something!!");
+        ($(element).parent()).remove();
+        cart.splice(-1,1);
+        updateCartCount();
     }
 
     var getPrice = function (cat) {

@@ -41,6 +41,10 @@ body {
 	
 }
 
+#mainHeader nav .delFromCart {
+    cursor: pointer;
+}
+
 section#innhold {
 	clear: both;
 	background-color: #edf0f5;
