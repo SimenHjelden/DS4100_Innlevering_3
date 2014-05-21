@@ -122,8 +122,6 @@
                     +"<p class='price'>"+(cart[i].count * cart[i].price)+"NOK</p>"
                     +"<a class='removeItem'>Slett</a>"
                 +"</div>");
-            $("#cartContent").append("<div><img src='"+item.img+"' alt='"+item.title+"' />"
-                + "<h2>"+item.title+"</h2></br><p>Antall: "+cart[i].count+"x</p><a class='removeItem'></a></div>");
             cart.count += item.count;
         });
         $(".cart_icon").html("X (<span>" + cart.count + "</span>)");
@@ -144,7 +142,7 @@
                 if(cart[i].count <= 1) {
                     console.log("luckily, there is only one of its kind in your cart, lets just throw it out!");
                     $(stupidMovie.parent()).remove();
-                    cart[i].remove();
+                    cart.pop(i);
                 } else {
                     console.log("you've got like " + cart[i].count + "x of that stupid " + stupidMovie.children('img').attr('alt') + " movie, let me throw away just one.");
                     cart[i].count--;
