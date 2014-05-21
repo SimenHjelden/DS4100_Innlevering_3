@@ -40,21 +40,24 @@ body {
 
 #mainHeader nav#handlekurv > a {
     font-family:Arial;
-    font-size:12px;
+    font-size:11px;
     color:#fff;
+    
 
    
 }
 
-#mainHeader nav#handlekurv>a.cart_icon {
-    background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
-    padding:5px 34px 5px 24px;
-    width: 56px;
-    margin-right: 10px;
+#mainHeader nav#handlekurv .cart_icon {
+   background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
+   padding-left: 24px;
+   padding-right:34px;
+   padding-top:5px;
+   width: 56px;
+   margin-right: 10px;
 }
 
-#mainHeader nav#handlekurv>a.cart_icon .cartOpen {
-    background: url("cart_ico_close_open.png") no-repeat 0 4px;
+#mainHeader nav#handlekurv>a.cart_icon.cartOpen {
+    background: url("../images/cart_ico_close_open.png") no-repeat 0 4px;
 }
 
 #mainHeader nav#handlekurv>a.cart_link {
@@ -91,6 +94,27 @@ body {
     border-top: 1px solid #bfbfbf;
 }
 
+#expandable nav a.hideCart {
+    float: left;
+    background: url("../images/close_minicart.png") no-repeat 100% center;
+    padding-right: 20px;
+    line-height: 30px;
+
+}
+
+#expandable nav a.goToCart {
+float: right;
+line-height: 30px;
+background: url("../images/left_b.png") no-repeat 100% center;
+padding-right: 20px;
+}
+
+
+#expandable nav a:first-child img {
+    margin-left:5px;
+    margin-right:3px;
+}
+
 
 
 #cartContent div {
@@ -109,6 +133,9 @@ body {
 
 #cartContent div p {
     border:none;
+    display: inline-block;
+    padding: 0px 0px 0px 5px;
+    font-weight:normal;
 }
 
 #cartContent img {
@@ -120,11 +147,13 @@ body {
 }
 
 .removeItem {
-    float:right;
-    margin-right:5px;
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    background: url("../images/trash.png") no-repeat center center;
+    display: block;
+    width: 11px;
+    height: 22px;
+    bottom: 0;
+    right: 0;
 }
 
 #mainHeader nav .removeItem {
