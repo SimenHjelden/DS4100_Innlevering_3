@@ -1,20 +1,26 @@
 ﻿(function(){
 
-    var buyBtn;
+    var logo;
 
-    var init = function () {
+    var init = function() {
         getJSON();
-        //console.log("init funksjon ferdig");
+        setObjects();
         setEventHandlers();
     }
 
-    var setObjects = function () {
+    var setObjects = function() {
+       logo = $("#logo");
        
     }
 
-  
+    var setEventHandlers = function() {
+        logo.click(function(event) {
+            console.log("logo got clicked");
+        });
+        
+    }
 
-    var getJSON = function () {
+    var getJSON = function() {
         $.ajax({
             url: "../js/movies.json",
             dataType: "json",
@@ -24,16 +30,15 @@
                         "<article><img src='../" + item.imageSrc + "'/>" + "<h1>" + item.Title + "</h1>" + "<p>" + item.Description + "</p>" + "<div class='price'>" + getPrice(item.priceCat) + "</div>" + "<img src='../images/buy.png' alt='buy.png' class='buy' />" + "</article>"
                        );
                 });
-            }
+                $(".buy").click(function(event) {
+                    buyItem(this);
+                });
+            } 
         });
-
-        buyBtn = $("img.buy");     
     }
 
-    var setEventHandlers = function () {
-        buyBtn.click(function () {
-            console.log("Knappen er klikket");
-        });
+    var buyItem = function (element) {
+        console.log(element);
     }
 
     var getPrice = function (cat) {
