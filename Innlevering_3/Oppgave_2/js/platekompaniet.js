@@ -20,6 +20,10 @@
         
     }
 
+    var putInCart = function (element) {
+        console.log(element);
+    }
+
     var getJSON = function() {
         $.ajax({
             url: "../js/movies.json",
@@ -32,20 +36,16 @@
                         + "<h1>" + item.Title + "</h1>"
                         + "<p>" + item.Description + "</p>"
                         + "<div class='price'>"+ getPrice(item.priceCat)+ "</div>"
-                        + "<img src='../images/buy.png' alt='buy.png' class='buy' />"
+                        + "<img src='../images/buy.png' alt='buy.png' class='buy' onclick='putInCart(" + item.Title + ")' />"
                         + "</article>"
                        );
                 });
-                $(".buy").click(function(event) {
-                    buyItem(this);
-                });
+            
             } 
         });
     }
 
-    var buyItem = function (element) {
-        console.log(element);
-    }
+
 
     var getPrice = function (cat) {
         switch (cat) {
