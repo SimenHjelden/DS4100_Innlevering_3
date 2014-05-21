@@ -118,9 +118,9 @@
             $("#cartContent").append(
                 "<div>"
                     +"<img src='"+item.img+"' alt='"+item.title+"' />"
-                    + "<h2>"+item.title+"</h2><p class='movieCount'>"+cart[i].count+"x</p>"
-                    +"<p class='price'>"+(cart[i].count * cart[i].price)+"NOK</p>"
-                    +"<a class='removeItem'>Slett</a>"
+                    + "<h2>"+item.title+"</h2></br><p class='movieCount'>"+cart[i].count+"x</p></br>"
+                    +"<p class='price'>Pris: "+(cart[i].count * cart[i].price)+"NOK</p>"
+                    +"<a class='removeItem'></a>"
                 +"</div>");
             cart.count += item.count;
         });
