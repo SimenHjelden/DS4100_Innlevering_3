@@ -53,7 +53,7 @@
     }
 
     var updateCartCount = function() {
-        return $(".cart_icon").html("x (<span>"+ cart.length +"</span>)");
+        return $(".cart_icon").html("X (<span>"+ cart.length +"</span>)");
     }
 
     var delFromChart = function(element) {
