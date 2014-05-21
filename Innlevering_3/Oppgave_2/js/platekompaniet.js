@@ -47,13 +47,13 @@
         console.log("Movie id in JSON: " + movieId);
         //cart.push(movieId);
         $(".cart_icon").html("x (<span>"+ cart.length +"</span>)");
-        $("#expandable div").append("<img><h2>"+getMovieName(movieId)+"</h2><p></p><a href='#'>Slett</a>");
+        $("#expandable div").append("<h2>"+getMovieName(movieId)+"</h2><p></p><a href='#'>Slett</a>");
         //console.log(cart);
     }
 
     var getMovieName = function (movieId) {
         $.getJSON('../js/movies.json', function(data) {
-            return data.movies[movieId].Title;
+            return data.movies;
         });
     }
 
