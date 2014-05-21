@@ -47,10 +47,14 @@ body {
 }
 
 #mainHeader nav#handlekurv>a.cart_icon {
-    background: url("../images/cart_ico_close_open.png");
-    padding-left: 24px;
+    background: url("../images/cart_ico_close_open.png") no-repeat 100% -14px;
+    padding:5px 34px 5px 24px;
     width: 56px;
     margin-right: 10px;
+}
+
+#mainHeader nav#handlekurv>a.cart_icon .cartOpen {
+    background: url("cart_ico_close_open.png") no-repeat 0 4px;
 }
 
 #mainHeader nav#handlekurv>a.cart_link {
@@ -72,32 +76,55 @@ body {
     padding-bottom: 0px;
     border-top: none;
     font-family:Arial;
+    display:none;
 }
 
 #expandable p {
-    border-bottom: 1px solid #bfbfbf;
-    padding: 5px 0px 5px 0px;
-    font-size: 14px;
-    font-family: Arial;
-    font-weight: bold;
+    font-weight:bold;
+    font-size:12px;
+    font-family:Arial;
+    border-bottom:1px solid #bfbfbf;
+}
+
+#expandable nav {
+    margin-top: 1px;
+    border-top: 1px solid #bfbfbf;
 }
 
 
-#cart-content div {
+
+#cartContent div {
     position: relative;
     padding-top: 7px;
-    padding-bottom: 7px;
     border-bottom: 1px solid #bfbfbf;
     font-size:11px;
+    height:75px;
 }
 
-#cart-content div p {
-    padding:0;
+#cartContent div h2 {
+    font-size:11px;
+    margin:0px 0px 0px 5px;
+    display:inline-block;
+}
+
+#cartContent div p {
+    border:none;
+}
+
+#cartContent img {
+    float: left;
+    -webkit-box-shadow: 2px 1px 5px rgba(110, 112, 112, 0.7);
+    -moz-box-shadow: 2px 1px 5px rgba(110, 112, 112, 0.7);
+    box-shadow: 2px 1px 5px rgba(110, 112, 112, 0.7);
+    width: 48px;
 }
 
 .delFromCart {
     float:right;
     margin-right:5px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 
 #mainHeader nav .delFromCart {

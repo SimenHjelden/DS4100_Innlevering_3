@@ -1,6 +1,6 @@
 ﻿(function(){
 
-    var komplettJSON, logo, cart = [];
+    var komplettJSON, logo, cart = [], cartLink;
 
     var init = function() {
         setObjects();
@@ -11,12 +11,18 @@
     var setObjects = function() {
        komplettJSON = "../js/movies.json";
        logo = $("#logo");
+       cartLink = $(".cart_icon");
     }
 
     var setEventHandlers = function() {
         logo.click(function(event) {
             console.log("logo got clicked");
         });
+        cartLink.click(function () {
+            $("#expandable").css("display", "block");
+            cartLink.addClass("cartOpen");
+        });
+
     }
 
     var getJSON = function() {
@@ -33,7 +39,15 @@
                 );
             });
             $(".buy").click(function(){
-                putInCart($(this).closest('article').children('h1'), this.id, $(this).closest('article').children('img').src);
+                putInCart($(this).closest('article').children('h1'),
+                            this.id,
+                            $(this).closest('article').children('img').attr('src'));
+
+                $("#expandable").css("display", "block");
+                $("#expandable nav a:first-child").click(function () {
+                    console.log("klikk");
+                    $("#expandable").css("display", "none");
+                });
             });
         });
     }
@@ -47,14 +61,14 @@
         //Add clicked movie to cart, and update cartMenu
         cart.push(movieId);
         updateCartCount();
-        $("#cartContent").append("<div>"+img+"<h2>"+title+"</h2><p></p><a class='delFromCart'>Slett</a></div>");
+        $("#cartContent").append("<div>"+ "<img src='" +  imgUrl + "'/><h2>"+title+"</h2><p></p><a class='delFromCart'>Slett</a></div>");
         $(".delFromCart").click(function(){
             delFromChart(this);
         });
     }
 
     var updateCartCount = function() {
-        return $(".cart_icon").html("X (<span>"+ cart.length +"</span>)");
+        return $(".cart_icon").html("X (<span>" + cart.length + "</span>)");
     }
 
     var delFromChart = function(element) {
@@ -75,9 +89,6 @@
         }
     }
 
-    var expandCart = function () {
-
-    }
 
 
     $( document ).ready(init());
