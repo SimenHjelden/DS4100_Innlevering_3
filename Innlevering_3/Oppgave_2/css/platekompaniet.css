@@ -119,7 +119,7 @@ body {
     width: 48px;
 }
 
-.delFromCart {
+.removeItem {
     float:right;
     margin-right:5px;
     position: absolute;
@@ -127,7 +127,7 @@ body {
     right: 5px;
 }
 
-#mainHeader nav .delFromCart {
+#mainHeader nav .removeItem {
     cursor: pointer;
 }
 
