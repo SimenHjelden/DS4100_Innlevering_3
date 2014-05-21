@@ -1,6 +1,6 @@
 ﻿(function(){
 
-    var logo;
+    var logo, cart = [];
 
     var init = function() {
         getJSON();
@@ -10,7 +10,6 @@
 
     var setObjects = function() {
        logo = $("#logo");
-       
     }
 
     var setEventHandlers = function() {
@@ -20,10 +19,6 @@
         
     }
 
-    var putInCart = function (element) {
-        console.log(element);
-    }
-
     var getJSON = function() {
         $.ajax({
             url: "../js/movies.json",
@@ -31,22 +26,36 @@
             success: function (data) {
                 $.each(data.movies, function (i, item) {
                     $("section#hovedInnhold").append(
-                        "<article><img src='../" + item.imageSrc + "'/>" + "<h1>" + item.Title + "</h1>" + "<p>" + item.Description + "</p>" + "<div class='price'>" + getPrice(item.priceCat) + "</div>" + "<img src='../images/buy.png' alt='buy.png' class='buy' />" + "</article>"
                         "<article>"
                         + "<img src='../" + item.imageSrc + "'/>"
                         + "<h1>" + item.Title + "</h1>"
                         + "<p>" + item.Description + "</p>"
                         + "<div class='price'>"+ getPrice(item.priceCat)+ "</div>"
-                        + "<img src='../images/buy.png' alt='buy.png' class='buy' onclick='putInCart(" + item.Title + ")' />"
+                        + "<img id='movieId"+ i +"'' src='../images/buy.png' alt='buy' class='buy' />" //onclick='putInCart(" + i + ");'
                         + "</article>"
                        );
                 });
-            
+                $(".buy").click(function(){
+                    putInCart(this.id);
+                });
             } 
         });
     }
 
+    var putInCart = function (element) {
+        var movieId = element.substring(7);
+        console.log("Movie id in JSON: " + movieId);
+        //cart.push(movieId);
+        $(".cart_icon").html("x (<span>"+ cart.length +"</span>)");
+        $("#expandable div").append("<img><h2>"+getMovieName(movieId)+"</h2><p></p><a href='#'>Slett</a>");
+        //console.log(cart);
+    }
 
+    var getMovieName = function (movieId) {
+        $.getJSON('../js/movies.json', function(data) {
+            return data.movies[movieId].Title;
+        });
+    }
 
     var getPrice = function (cat) {
         switch (cat) {
