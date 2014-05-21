@@ -40,8 +40,9 @@ body {
 
 #mainHeader nav#handlekurv > a {
     font-family:Arial;
-    font-size:12px;
+    font-size:11px;
     color:#fff;
+    
 
    
 }
@@ -89,6 +90,28 @@ body {
 #expandable nav {
     margin-top: 1px;
     border-top: 1px solid #bfbfbf;
+     padding:10px 0px 10px 0px;    
+}
+
+#expandable nav a.hideCart {
+    float: left;
+    background: url("../images/close_minicart.png") no-repeat 100% center;
+    padding-right: 20px;
+    line-height: 30px;
+
+}
+
+#expandable nav a.goToCart {
+float: right;
+line-height: 30px;
+background: url("../images/left_b.png") no-repeat 100% center;
+padding-right: 20px;
+}
+
+
+#expandable nav a:first-child img {
+    margin-left:5px;
+    margin-right:3px;
 }
 
 
