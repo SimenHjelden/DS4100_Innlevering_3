@@ -114,9 +114,9 @@ section#hovedInnhold article img {
 
 section#hovedInnhold article .pris {
         width:76px;
-        height:22px;
+        height:23px;
         background-image:url(../images/price-label.gif);
-        margin:15px 1px 0px 10px;
+        margin:10px 1px 0px 5px;
         padding:3px 7px 0px 0px;
         float:left;
         font-size:16px;
@@ -127,9 +127,9 @@ section#hovedInnhold article .pris {
 
 section#hovedInnhold article .buy {
         width:66px;
-        margin-left:85px;
         height:25px;
         float:left;
+        margin-top:10px;
         background-image:url(../images/buy.png);
         display:inline-block;
        

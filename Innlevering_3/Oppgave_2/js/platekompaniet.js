@@ -20,7 +20,7 @@
             success: function (data) {
                 $.each(data.movies, function (i, item) {
                     $("section#hovedInnhold").append(
-                        "<article><img src='../" + item.imageSrc + "'" + "<h1>" + item.Title + "</h1>" + "<p>" + item.Description + "</p>" + "<div class='pris'>" + "<img src='../images/buy.png' alt='buy.png' class='buy' />" + "</article>"
+                        "<article><img src='../" + item.imageSrc + "'/>" + "<h1>" + item.Title + "</h1>" + "<p>" + item.Description + "</p>" + "<div class='pris'></div>" + "<img src='../images/buy.png' alt='buy.png' class='buy' />" + "</article>"
                        );
                 });
             }
