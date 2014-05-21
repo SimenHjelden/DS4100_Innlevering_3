@@ -1,18 +1,26 @@
 ﻿(function(){
 
-    var buyBtn;
+    var logo;
 
-    var init = function () {
+    var init = function() {
         getJSON();
-        //console.log("init funksjon ferdig");
+        setObjects();
         setEventHandlers();
     }
 
-    var setObjects = function () {
+    var setObjects = function() {
+       logo = $("#logo");
        
     }
 
-    var getJSON = function () {
+    var setEventHandlers = function() {
+        logo.click(function(event) {
+            console.log("logo got clicked");
+        });
+        
+    }
+
+    var getJSON = function() {
         $.ajax({
             url: "../js/movies.json",
             dataType: "json",
@@ -28,16 +36,15 @@
                         + "</article>"
                        );
                 });
-            }
+                $(".buy").click(function(event) {
+                    buyItem(this);
+                });
+            } 
         });
-
-        buyBtn = $("img.buy");     
     }
 
-    var setEventHandlers = function () {
-        buyBtn.click(function () {
-            console.log("Knappen er klikket");
-        });
+    var buyItem = function (element) {
+        console.log(element);
     }
 
     var getPrice = function (cat) {

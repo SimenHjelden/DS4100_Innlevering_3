@@ -139,6 +139,7 @@ section#hovedInnhold article .buy {
         margin-top:10px;
         background-image:url(../images/buy.png);
         display:inline-block;
+        cursor: pointer;
        
     }
 
