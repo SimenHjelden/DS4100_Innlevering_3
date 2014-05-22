@@ -146,8 +146,8 @@
                 console.log("found it!");
                 if(cart[i].count <= 1) {
                     console.log("luckily, there is only one of its kind in your cart, lets just throw it out!");
-                    $(stupidMovie.parent()).remove();
-                    removeFromCart();
+                    removeFromCart(cart[i]);
+                    updateCart();
                 } else {
                     console.log("you've got like " + cart[i].count + "x of that stupid " + stupidMovie.children('img').attr('alt') + " movie, let me throw away just one.\n");
                     cart[i].count--;
@@ -162,7 +162,6 @@
         cart = jQuery.grep(cart, function(value){
             return value != item;
         });
-        console.log(cart);
     }
 
     var getPrice = function (cat) {
