@@ -47,7 +47,7 @@
                     + "<img src='../" + item.imageSrc + "'/>"
                     + "<h1>" + item.Title + "</h1>"
                     + "<p>" + item.Description + "</p>"
-                    + "<div class='price'>"+ price.slice(0,-2) + "<span class='cents'>" + price.substr(price.length - 2) + "</span></div>"
+                    + "<div class='price'>" + price.slice(0,-2) + "<span class='cents'>" + price.substr(price.length - 2) + "</span></div>"
                     + "<img src='../images/buy.png' alt='buy' class='buy' />"
                     + "</article>"
                 );
@@ -130,6 +130,9 @@
             console.log("Whats up with that stupid movie, I cant stand it! Lets remove it right now!");
             removeItem($(this).closest('div'));
         });
+        if(cart.count == "0") {
+            $("#expandable").hide();
+        }
     }
 
     /*
