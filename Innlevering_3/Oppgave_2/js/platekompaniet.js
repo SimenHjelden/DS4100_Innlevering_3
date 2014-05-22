@@ -17,10 +17,6 @@
     }
 
     var setEventHandlers = function () {
-        logo.click(function (event) {
-            //console.log("logo got clicked");
-        });
-
         cartLink.click(function () {
             if (!cartOpen) {
                 $("#expandable").css("display", "block");
@@ -32,7 +28,6 @@
                 $("#expandable").css("display", "none");
                 cartOpen = false;
                 cartLink.removeClass("cartOpen");
-
             }
         });
       
@@ -41,17 +36,18 @@
             cartLink.removeClass("cartOpen");
             cartOpen = false;
          });
-        }
+    }
 
     var getJSON = function() {
         $.getJSON( komplettJSON, function(data){
             $.each(data.movies, function(i, item) {
+                var price = getPrice(item.priceCat);
                 $("section#hovedInnhold").append(
                     "<article id='movieId"+ i +"'>"
                     + "<img src='../" + item.imageSrc + "'/>"
                     + "<h1>" + item.Title + "</h1>"
                     + "<p>" + item.Description + "</p>"
-                    + "<div class='price'>"+ getPrice(item.priceCat)+ "</div>"
+                    + "<div class='price'>"+ price.slice(0,-2) + "<span class='cents'>" + price.substr(price.length - 2) + "</span></div>"
                     + "<img src='../images/buy.png' alt='buy' class='buy' />"
                     + "</article>"
                 );
@@ -124,7 +120,7 @@
                 "<div>"
                     +"<img src='"+item.img+"' alt='"+item.title+"' />"
                     + "<h2>"+item.title+"</h2></br><p class='movieCount'>"+cart[i].count+"x</p></br>"
-                    +"<p class='price'>Pris: "+parseInt(cart[i].count) * parseFloat(cart[i].price)+"NOK</p>"
+                    +"<p class='price'>Pris: "+ (parseFloat(cart[i].count) * parseFloat(cart[i].price)).toFixed(2) +"NOK</p>"
                     +"<a class='removeItem'></a>"
                 +"</div>");
             cart.count += item.count;
@@ -167,10 +163,10 @@
     var getPrice = function (cat) {
         switch (cat) {
             case "A":
-                return "149.<span class='cents'>50</span>"
+                return "149.50"
                 break;
             case "B":
-                return "129.<span class='cents'>50</span>"
+                return "129.50"
                 break;
         }
     }
