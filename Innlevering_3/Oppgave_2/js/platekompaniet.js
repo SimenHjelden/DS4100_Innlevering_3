@@ -81,7 +81,7 @@
         var found = false;
         if(cart.length < 1) {
             console.log("There was nothing in the cart baby, therefor lets add the the movie " + title);
-            cart.push({"movieId" : id, "title" : title, "img" : url, "count" : 1});
+            addMovie(id, title, url, 1);
             console.log(title + " added!\n");
         } else {
             console.log("Lets check if "+title+" is allready added in your cart...");
@@ -91,20 +91,25 @@
                     cart[i].count++;
                     console.log(title + " added! Wow, now you've got " + cart[i].count + "x of that badboy in your cart!\n");
                     found = true;
+                    updateCart();
                     break;
                 }
             }
             if(!found) {
                 console.log("Looks like you don't got this movie in your cart, lets add it!");
                 console.log(title + " added!\n");
-                var price = 0;
-                $.getJSON( komplettJSON, function(data){
-                    price = getPrice(data.movies[id].priceCat);
-                });
-                cart.push({"movieId" : id, "title" : title, "img" : url, "count" : 1, "price" : price});
+                addMovie(id, title, url, 1);
             }
         }
-        updateCart();
+    }
+
+    var addMovie = function(id, title, url, count) {
+        $.getJSON( komplettJSON, function(data){
+            var price = getPrice(data.movies[id].priceCat);
+            cart.push({"movieId" : id, "title" : title, "img" : url, "count" : 1, "price" : price});
+            updateCart();
+        });
+        
     }
 
     /*
@@ -119,7 +124,7 @@
                 "<div>"
                     +"<img src='"+item.img+"' alt='"+item.title+"' />"
                     + "<h2>"+item.title+"</h2></br><p class='movieCount'>"+cart[i].count+"x</p></br>"
-                    +"<p class='price'>Pris: "+(cart[i].count * cart[i].price)+"NOK</p>"
+                    +"<p class='price'>Pris: "+parseInt(cart[i].count) * parseFloat(cart[i].price)+"NOK</p>"
                     +"<a class='removeItem'></a>"
                 +"</div>");
             cart.count += item.count;
@@ -144,7 +149,7 @@
                     $(stupidMovie.parent()).remove();
                     removeFromCart();
                 } else {
-                    console.log("you've got like " + cart[i].count + "x of that stupid " + stupidMovie.children('img').attr('alt') + " movie, let me throw away just one.");
+                    console.log("you've got like " + cart[i].count + "x of that stupid " + stupidMovie.children('img').attr('alt') + " movie, let me throw away just one.\n");
                     cart[i].count--;
                 }
                 break;
