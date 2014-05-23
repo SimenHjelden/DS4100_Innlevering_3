@@ -9,33 +9,35 @@
     }
 
     var setObjects = function() {
-       komplettJSON = "../js/movies.json";
-       cartLink = $(".cart_icon");
-       cartOpen = false;
-       cartCloseLink = $(".hideCart");
-       expandable = $("#expandable");
+        komplettJSON = "../js/movies.json";
+        cartLink = $(".cart_icon");
+        cartOpen = false;
+        cartCloseLink = $(".hideCart");
+        expandable = $("#expandable");
     }
 
     var setEventHandlers = function () {
         cartLink.click(function () {
             if (!cartOpen) {
-                expandable.css("display", "block");
+                expandable.animate({"opacity": "1", "height": "auto"});
                 console.log("expand cart clicked");
                 cartLink.addClass("cartOpen");
             }
             else {
-                expandable.css("display", "none");
+                expandable.animate({"opacity": "0", "height": "auto"});
                 cartLink.removeClass("cartOpen");
             }
             cartOpen = !(cartOpen);
         });
       
         cartCloseLink.click(function () {
-            expandable.css("display", "none");
-            cartLink.removeClass("cartOpen");
+            expandable.animate({ "opacity": "0", "height": "0px" });
+            cartLink.addClass("cartOpen");
             cartOpen = !(cartOpen);
-         });
-    }
+       });
+            
+   };
+
 
     /*
         Reads the json-object containing all avalible movies, 
@@ -56,8 +58,14 @@
             });
             $(".buy").click(function(){
                 putInCart($(this));
-                expandable.css("display", "block");
-                cartOpen = true;
+                expandable.animate(
+                   {
+                       "opacity": "1",
+                       "height": "auto"
+                   });
+                
+                cartLink.addClass("cartOpen");
+                
             });
         });
     }
@@ -118,8 +126,8 @@
             $("#cartContent").append(
                 "<div>"
                     +"<img src='"+item.img+"' alt='"+item.title+"' />"
-                    + "<h2>"+item.title+"</h2></br><p class='movieCount'>"+cart[i].count+"x</p></br>"
-                    +"<p class='price'>Pris: "+ getPrice(cart[i].price, cart[i].count) + "NOK</p>"
+                    + "<h2>"+item.title+"</h2></br><p class='movieCount'>Antall: "+cart[i].count+"x</p></br>"
+                    +"<p class='price'>Pris: "+ getPrice(cart[i].price, cart[i].count) + " NOK</p>"
                     +"<a class='removeItem'></a>"
                 +"</div>");
             cart.count += item.count;
@@ -130,7 +138,7 @@
             removeItem($(this).closest('div'));
         });
         if(cart.count == "0") {
-            expandable.hide();
+            expandable.animate({"opacity": "0", "height": "0px"});
         }
     }
 
@@ -163,13 +171,13 @@
         var pris;
         switch (cat) {
             case "A":
-                pris = "149.50";
+                pris = 149.50;
                 break;
             case "B":
-                pris = "129.50";
+                pris = 129.50;
                 break;
         }
-        pris = (parseFloat(count) * parseFloat(pris)).toFixed(2)
+        pris = (count * pris).toFixed(2)
         return pris.slice(0,-2) + "<span class='cents'>" + pris.substr(pris.length - 2) + "</span>";
     }
 
