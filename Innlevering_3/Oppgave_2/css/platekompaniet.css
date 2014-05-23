@@ -33,7 +33,7 @@ body {
 #mainHeader nav#handlekurv {
     background-color: #f5821e;
     border-radius: 5px;
-    width: 188px;
+    width: 192px;
     padding:10px 5px 10px 10px;
 }
 
@@ -79,7 +79,7 @@ body {
     padding-bottom: 0px;
     border-top: none;
     font-family:Arial;
-    display:none;
+    opacity:0;
 }
 
 #expandable p {
@@ -144,6 +144,7 @@ padding-right: 20px;
     -moz-box-shadow: 2px 1px 5px rgba(110, 112, 112, 0.7);
     box-shadow: 2px 1px 5px rgba(110, 112, 112, 0.7);
     width: 48px;
+    margin-right:5px;
 }
 
 .removeItem {
@@ -191,7 +192,7 @@ section#hovedInnhold article  {
     overflow:hidden;
     margin:0px -5px 15px 0px;
     background-color:#fff;
-    padding:10px 0px 5px 10px;
+    padding:5px 5px 5px 5px;
     min-height:160px;
     border: solid 1px #B2C2D9;
 }
@@ -207,7 +208,7 @@ section#hovedInnhold article h1, section#hovedInnhold article p {
     font-family:Arial;
     font-size:16px;
     display:inline-block;
-    margin:0px 0px 5px 5px;
+    margin:0px 0px 5px 8px;
     padding:0px;
     color:#000;
 }
@@ -222,8 +223,9 @@ section#hovedInnhold article h1 {
 
 section#hovedInnhold article p {
     font-size:12px;
-    width:255px;
+    width:250px;
     padding-top:10px;
+    overflow:hidden;
 
 }
 
@@ -231,13 +233,14 @@ section#hovedInnhold article img {
     width:108px;
     height:152px;
     float:left;
+    margin:5px 0px 0px 2px;
 }
 
 section#hovedInnhold article .price {
         width:76px;
         height:23px;
         background-image:url(../images/price-label.gif);
-        margin:10px 1px 0px 5px;
+        margin:5px 1px 0px 5px;
         padding:3px 7px 0px 0px;
         float:left;
         font-size:16px;
@@ -256,7 +259,7 @@ section#hovedInnhold article .buy {
         width:66px;
         height:25px;
         float:left;
-        margin-top:10px;
+        margin-top:5px;
         background-image:url(../images/buy.png);
         display:inline-block;
         cursor: pointer;
