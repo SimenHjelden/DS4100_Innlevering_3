@@ -46,7 +46,7 @@
 	    	var n = startGameInput.value.toLowerCase();
 	    	userName.innerHTML = n.charAt(0).toUpperCase() + n.slice(1);
 	    	currentScore.innerHTML = "0 points";
-	    	console.log("Ditt brukernavn er " + startGameInput.value);
+	    	//console.log("Ditt brukernavn er " + startGameInput.value);
 	    	startGameInput.removeEventListener("keyup", startGame, false);
 	    	splashScreen.style.display="none";
 	    	setTimeout(function() {
@@ -59,7 +59,7 @@
 	var showCurrentGame = function() {
 		currentGame.forEach(function(entry) {
 			var currentBtn = -1;
-		    switch(entry) {
+			switch(entry) {
 		    	case 1:
 		    		currentBtn = button.topLeft;
 		    		break;
@@ -73,7 +73,12 @@
 		    		currentBtn = button.bottomRight;
 		    		break;
 		    }
-		    console.log(currentBtn.id);
+		    var currentBtnDefaultBackgroundColor = currentBtn.style.backgroundColor;
+		    currentBtn.style.backgroundColor = "#333";
+			setTimeout(function() {
+				currentBtn.style.backgroundColor = currentBtnDefaultBackgroundColor;
+			}, 500);
+		    //console.log(currentBtn.id);
 		});
 	}
 
@@ -91,7 +96,7 @@
 
 	var createNewGame = function() {
 		currentGame.push(Math.floor((Math.random() * 4) + 1));
-		console.log(currentGame);
+		//console.log(currentGame);
 	}
 
 	var positionateObjects = function() {
@@ -112,14 +117,3 @@
 	};
 
 })();
-
-
-
-
-
-
-
-
-
-
-
