@@ -208,7 +208,7 @@ section#hovedInnhold article h1, section#hovedInnhold article p {
     font-family:Arial;
     font-size:16px;
     display:inline-block;
-    margin:0px 0px 5px 8px;
+    margin:0px 0px 5px 5px;
     padding:0px;
     color:#000;
 }
@@ -219,13 +219,14 @@ section#hovedInnhold article h1 {
     width:auto;
     display:inline-block;
     background-image:none;
+    margin-top:5px;
 }
 
 section#hovedInnhold article p {
     font-size:12px;
-    width:250px;
-    padding-top:10px;
+    width:255px;
     overflow:hidden;
+    padding:10px 0px 0px 0px;
 
 }
 
