@@ -12,7 +12,10 @@ body {
 	position: absolute;
 	background-color: #ecf0f1;
 	z-index: 1;
+    text-align:center;
 }
+
+
 #start {
 	text-align: center;
 	position: absolute;
@@ -35,6 +38,7 @@ input{
 	position: absolute;
 	width: 100%;
 	height: 100%;
+    display:none;
 }
 
 #scoreBoard {
