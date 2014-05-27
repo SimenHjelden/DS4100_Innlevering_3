@@ -1,9 +1,25 @@
 ﻿(function () {
 
     var init = function () {
-        displaySuperheroes();
         setEventHandlers();
+        displaySuperheroes();
         dropableRegions();
+    }
+
+
+    var setEventHandlers = function () {
+        $("#leggTilAlle").click(function () {
+            $("#dropZone .dragImg").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
+            $("table tr").not("tr:first-child").remove();
+            $("#galleri .dragImg").draggable("enable");
+        });
+
+        $("#returnerSiste").click(function () {
+            $("#dropZone .dragImg:last-child").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
+            $("table tr:last-child").not("tr:first-child").remove();
+            $("#galleri .dragImg").draggable("enable");
+        });
+
     }
 
     var displaySuperheroes = function () {
@@ -32,6 +48,7 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data.superhelter, function (i, item) {
+                            
                             if (item.bildeSrc === $(ui.draggable).attr("src")) {
                                 $("table").append("<tr>"
                                                     + "<td>" + item.navn + "</td>"
@@ -40,25 +57,15 @@
                                                     + "<td>" + item.weakness + "</td>"
                                                     + "<td>" + item.info + "</td>"
                                                     + "</tr>");
-                                $("#statusBar").progressbar({
-                                    value: 50
-                                });
-                            }
+
+                                
+                            }  
                         });
                     }
                 });
             }
         });
     }
-
-    var setEventHandlers = function () {
-        $("#leggTilAlle").click(function(){
-            $("#dropZone .dragImg").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
-            $("table tr").not("tr:first-child").remove();
-            $("#galleri .dragImg").draggable("enable");
-        });
-    }
-
 
     window.onload = init;
 
