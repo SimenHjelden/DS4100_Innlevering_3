@@ -1,6 +1,6 @@
 (function(){
 
-	var splashScreen, statusScreen, gameWrapper, 
+	var screens = [], splashScreen, statusScreen, gameWrapper, 
 	startField, startGameInput, userName, 
 	currentScore, 
 	button = [], currentGame = [], userInput = [], 
@@ -164,4 +164,29 @@ $.each(currentGame.value, function(i, item){
     }
 )}:
 }
+
+*/
+
+var game = [1, 4, 2];
+var btnToBlink = 0;
+
+setInterval(blinkButtons(game[0]), 500);
+
+var blinkButtons = function(buttonId) {
+	
+	setInterval(function(){
+		console.log("current button to blink: " + buttonId);
+	}, 500);
+
+	btnToBlink++;
+	if(btnToBlink <= game.length) {
+		blinkButtons(btnToBlink);
+	} else {
+		btnToBlink = 0;
+	}
+}
+
+
+
+
 */
