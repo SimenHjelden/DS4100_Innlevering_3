@@ -70,7 +70,7 @@
 	    }
 	}
 
-	var showCurrentGame = function() {
+	var showCurrentGame = function () {
 		currentGame.forEach(function(entry) {
 			var currentBtn = -1;
 			switch(entry) {
@@ -86,7 +86,8 @@
 		    	case 4:
 		    		currentBtn = button.bottomRight;
 		    		break;
-		    }
+			}
+
 		    var currentBtnDefaultBackgroundColor = currentBtn.style.backgroundColor;
 		    currentBtn.style.opacity = .5;
 			setTimeout(function() {
@@ -147,3 +148,20 @@
 	};
 
 })();
+
+
+//for hver verdi i current game array så skal vi sette en interval/Timeout som gjør at de blinker, når lengden av array er nådd så skal vi fjerne denne intervalen/timeout funsjonen
+/*
+var itererGjennomArray = function(){
+var timeout;
+$.each(currentGame.value, function(i, item){
+    timeout = item[i].setInterval(function(){
+        knapp.css("opacity, "0.5");
+    }, 500)
+
+    if(item[i] === currentGame.length){
+        clearInterval(interval);
+    }
+)}:
+}
+*/
