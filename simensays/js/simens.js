@@ -1,6 +1,10 @@
 (function(){
 
-	var splashScreen, gameWrapper, startField, startGameInput, userName, currentScore, button = [], currentGame = [], userInput = [], activeUser = false;
+	var splashScreen, statusScreen, gameWrapper, 
+	startField, startGameInput, userName, 
+	currentScore, 
+	button = [], currentGame = [], userInput = [], 
+	activeUser = false;
 
 	var init = function() {
 		setObjects();
@@ -11,10 +15,14 @@
 	var setObjects = function() {
 		startField = elementId("start");
 		splashScreen = elementId("splashScreen");
+		statusScreen = elementId("statusScreen");
+		statusScreen.style.display = "none";
+		
 		gameWrapper = elementId("gameWrapper");
 		startGameInput = elementId("userNameInput");
 		userName = elementId("username");
 		currentScore = elementId("score");
+		button.nextRound = elementId("nesteRundeBtn");
 		button.topLeft = elementId("topLeft");
 		button.bottomLeft = elementId("bottomLeft");
 		button.topRight = elementId("topRight");
@@ -39,7 +47,13 @@
 			//console.log("bottom right button clicked!");
 			checkInput(4, button.bottomRight);
 		}, false);
+		button.nextRound.addEventListener("click", function(){
+			alert("neste runde!");
+			statusScreen.style.display="none";
+			showCurrentGame();
+		}, false);
 	}
+	
 
 	var startGame = function(event) {
 	    if (event.keyCode == 13) {
@@ -74,20 +88,35 @@
 		    		break;
 		    }
 		    var currentBtnDefaultBackgroundColor = currentBtn.style.backgroundColor;
-		    currentBtn.style.backgroundColor = "#333";
+		    currentBtn.style.opacity = .5;
 			setTimeout(function() {
-				currentBtn.style.backgroundColor = currentBtnDefaultBackgroundColor;
+				currentBtn.style.opacity = 1;
 			}, 500);
 		    //console.log(currentBtn.id);
 		});
 	}
 
+	var simulateClickFrom = function() {
+	}
+
 	var checkInput = function(num, element) {
 		userInput.push(num);
 		if(userInput.length === currentGame.length) {
+			clickBtn(element);
 			createNewGame();
 			userInput = [];
 		}
+	}
+
+	var clickBtn = function(b) {
+		b.style.opacity = .5;
+		setTimeout(function() {
+			b.style.opacity = 1;
+			setTimeout(function() {
+				statusScreen.style.backgroundColor = "#ecf0f1";
+				statusScreen.style.display = "block";
+			}, 500);
+		}, 500);
 	}
 
 	var elementId = function(id) {
@@ -114,6 +143,7 @@
 	window.onresize = function(event) {
 	    setSenter(startField);
 		setSenter(gameWrapper);
+		setSenter(statusScreen);
 	};
 
 })();
