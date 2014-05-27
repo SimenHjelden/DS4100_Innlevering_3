@@ -45,19 +45,61 @@ $( window ).ready(function(){
 		result.list = [];
 		result.flag = false;
 		result.li = $(".snippetItem");
+		result.currInput = "";
+		result.prevInput = "";
+		result.selected = 0;
 	}
 
 	var settEventer = function() {
 		snippetsearch.input.bind("keyup", function() {
 			//console.log("Keyup!"); 
 			if($(this).val() != "") {
-				showsnippets($(this).val());
+				result.currInput = $(this).val();
+				if(result.prevInput != result.currInput) {
+					showsnippets(result.currInput);
+				}
+				result.prevInput = result.currInput;
+				$(this).click(function(){
+					result.ul.show();
+				});
 				//console.log(result.list);
 			} else {
 				resetResults();
 			}
 		});
 	}
+
+	
+	$(document).keydown(function(event) {
+		var code = (event.keyCode ? event.keyCode : event.which);
+		if($('#search #result ul li').length >= 0) {
+			if(code == 40) {
+				if(result.selected < $('#search #result ul li').length) {
+					result.selected++;
+					selectSnippetResult(result.selected);
+					console.log(result.selected);
+					console.log("Down key i pressed");
+				}
+			}else if(code == 38) {
+				if(result.selected > 1) {
+					result.selected--;
+					selectSnippetResult(result.selected);
+					console.log(result.selected);
+					console.log("Up key i pressed");
+				}
+			} else if(code == 13) {
+				alert(result.selected);
+			}
+		} else {
+			result.selected = 0;
+		}
+	});
+
+	var selectSnippetResult = function(snippetResultId) {
+		$("#search #result ul li").css("background-color", "");
+		$("#search #result ul li:nth-of-type("+snippetResultId+")").css("background-color", "#16a085");
+	}
+	
 
 	var settStr = function() {
 		mainContent.css({"min-height": window.innerHeight - 470});
@@ -97,6 +139,9 @@ $( window ).ready(function(){
 				var sliced = id.slice(9,id.length + 1);
 				var index = parseInt(sliced);
 				var element = snippetList[index];
+				result.ul.hide();
+				$("#search #result ul li").css("background-color", "#2ecc71");
+				result.selected = 0;
 				//console.log("DEBUG: " + element);
 
 				saveSnippet(element);
@@ -169,7 +214,6 @@ $( window ).ready(function(){
 
 	var clearOutput = function() {
 		result.ul.html("");
-		$('#tags').html("");
 	}
 
 	var removeIndexFromList = function(index) {
