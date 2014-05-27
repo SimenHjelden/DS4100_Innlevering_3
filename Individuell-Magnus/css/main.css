@@ -35,8 +35,8 @@ isindex {
     outline: none;
 }
 #search #result {
-	width: 200px;
-	display: inline-block;
+	position: absolute;
+	display: block;
 	float left;
 	color: #fff;
 }
@@ -44,8 +44,14 @@ isindex {
 	list-style: none;
 }
 #search #result ul li {
+	background-color: #2ecc71;
 	cursor: pointer;
+	padding: 5px;
 }
+#search #result ul li:hover {
+	background-color: #27ae60;
+}
+
 
 /* CODE SECTION */
 #code {
