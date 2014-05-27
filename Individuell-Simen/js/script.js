@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    var value = 0;
+
     var init = function () {
         setEventHandlers();
         displaySuperheroes();
@@ -12,12 +14,21 @@
             $("#dropZone .dragImg").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
             $("table tr").not("tr:first-child").remove();
             $("#galleri .dragImg").draggable("enable");
+            $("#status").progressbar({
+                value: 0
+
+            });
         });
 
         $("#returnerSiste").click(function () {
             $("#dropZone .dragImg:last-child").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
             $("table tr:last-child").not("tr:first-child").remove();
             $("#galleri .dragImg").draggable("enable");
+            value -= 10;
+            $("#status").progressbar({
+                value: value
+
+            });
         });
 
     }
@@ -36,7 +47,7 @@
     };
 
     var dropableRegions = function () {
-
+        
         $("#dropZone").droppable({
             accept: ".dragImg",
             cursor: "move",
@@ -58,7 +69,11 @@
                                                     + "<td>" + item.info + "</td>"
                                                     + "</tr>");
 
-                                
+                                value += 10;
+                                $("#status").progressbar({
+                                    value: value
+
+                                });
                             }  
                         });
                     }
