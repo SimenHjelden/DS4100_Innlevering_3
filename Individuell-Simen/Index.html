@@ -9,10 +9,15 @@
         <header id="mainHeader">
             <h1>SuperDB</h1>
         </header>
-        <input id="leggTilAlle" type="button" value="Return all" />
-        <div id="galleri"></div>
-        <div id="statusBar"></div>
-        <table>
+        <section id="hovedInnhold">
+            <div id="kontrollpanel">
+                <input id="leggTilAlle" type="button" value="Return all" />
+                <input id="returnerSiste" type="button" value="Return last" />
+                <div id="status"></div>
+                </div>
+            <div id="galleri"></div> 
+            <div id="dropZone"></div>
+             <table>
             <tr>
                 <th>NAME</th>
                 <th>REAL NAME</th>
@@ -20,9 +25,8 @@
                 <th>WEAKNESS</th>
                 <th>INFO</th>
             </tr>
-        </table>
-        <div id="dropZone"></div>
-       
+            </table>
+       </section>
     </section>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
