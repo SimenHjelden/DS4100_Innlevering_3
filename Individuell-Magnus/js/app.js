@@ -59,9 +59,7 @@ $( window ).ready(function(){
 					showsnippets(result.currInput);
 				}
 				result.prevInput = result.currInput;
-				$(this).click(function(){
-					result.ul.show();
-				});
+				result.ul.show();
 				//console.log(result.list);
 			} else {
 				resetResults();
@@ -88,11 +86,19 @@ $( window ).ready(function(){
 					console.log("Up key i pressed");
 				}
 			} else if(code == 13) {
-				alert(result.selected);
+				var snippetHash = snippetList[result.selected - 1].title;
+				window.location.hash = encodeURIComponent(snippetHash);
+
+				//console.log(result.selected);
 			}
 		} else {
 			result.selected = 0;
 		}
+	});
+
+	$(window).on('hashchange',function(){
+		showsnippets(unescape(location.hash.slice(1)));
+		alert(unescape(location.hash.slice(1)));
 	});
 
 	var selectSnippetResult = function(snippetResultId) {
@@ -153,7 +159,9 @@ $( window ).ready(function(){
 				})
 				$('#tags ul').html(metaOutput);
 				$('#tags ul li').click(function() {
+					snippetsearch.input.val($(this).text());
 					showsnippets($(this).text());
+					result.ul.show();
 				});
 			});
 		}
