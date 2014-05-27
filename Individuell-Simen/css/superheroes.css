@@ -1,0 +1,101 @@
+﻿body {
+}
+
+#wrapper {
+width:1280px;
+height:auto;
+margin:auto;
+}
+
+#leggTilAlle {
+    width:50%;
+    margin:10px 0px 10px 0px;
+    border:none;
+    height:60px;
+    font-family:'Century Gothic';
+    color:#FFF;
+    text-align:center;
+    background-color:#000;
+    font-size:1.2em;
+}
+
+#statusBar {
+    width: 48%;
+    height: 20px;
+    border: 1px solid;
+    float: right;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+#statusBar .ui-widget-content {
+
+color:#808080;
+}
+
+#wrapper #galleri {
+min-height:180px;
+width:50%;
+float:left;
+border: 2px dashed #000;
+}
+
+#galleri img {
+width:118px;
+height:175px;
+display:inline-block;
+margin:5px 5px 0px 5px;
+
+
+}
+
+#dropZone {
+height:auto;
+width:50%;
+float:left;
+min-height:180px;
+border:2px dashed #000;
+margin-top:10px;
+}
+
+#dropZone img {
+width:118px;
+height:175px;
+display:inline-block;
+margin:5px 5px 0px 5px;
+
+}
+
+table {
+    display: inline-block;
+    float: right;
+    width: 48%;
+    height: 100%;
+    border-spacing: 0px;
+    padding: 0px;
+    margin-left:10px;
+}
+
+table th {
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    font-weight: bold;
+    width: 5%;
+    padding: 0px;
+    margin: 0px;
+}
+
+table tbody tr {
+    height:45px;
+}
+
+table tbody tr:nth-child(odd){
+    background-color:#d8d8d8;
+}
+
+table tr td {
+    text-align:center;
+    font-family:'Century Gothic';
+    font-size:0.8em;
+}

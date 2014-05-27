@@ -1,0 +1,84 @@
+﻿ {"superhelter":	
+  [
+        {
+            "navn": "Batman",
+            "realName": "Bruce Wayne",
+            "power": "Cool gadgets",
+            "weakness": "",
+            "bildeSrc": "Bilder/Superhelter/batman.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Captain America",
+            "realName": "Steve Rogers",
+            "power": "Superhuman Capebilaties",
+            "weakness": "",
+            "bildeSrc": "Bilder/Superhelter/captainAmerica.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Daredevil",
+            "realName": "Matt Murdock",
+            "power": "Heightend senses",
+            "weakness": "Blind",
+            "bildeSrc": "Bilder/Superhelter/daredevil.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Flash",
+            "realName": "Barry Allen",
+            "power": "Supersonic speed",
+            "weakness": "",
+            "bildeSrc": "Bilder/Superhelter/flash.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Green Lantern",
+            "realName": "Hal Jordan",
+            "power": "Control of physical world",
+            "weakness": "",
+            "bildeSrc": "Bilder/Superhelter/greenLantern.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Hulk",
+            "realName": "Bruce Banner",
+            "power": "Super strength",
+            "weakness": "",
+            "bildeSrc": "Bilder/Superhelter/hulk.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Spiderman",
+            "realName": "Peter Parker",
+            "power": "Spidersense / Cobweb / Agility",
+           "weakness": "He has a lot of enemies",
+            "bildeSrc": "Bilder/Superhelter/spiderman.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Superman",
+            "realName": "Clark Kent",
+            "power": "Flight / Super Speed / X-Ray and Heat vision / Super strength",
+            "weakness": "Cryptonite",
+            "bildeSrc": "Bilder/Superhelter/superman.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Thor",
+            "realName": "Thor",
+            "power": "Control of lightning",
+            "weakness": "none",
+            "bildeSrc": "Bilder/Superhelter/thor.gif",
+            "info": "h"
+        },
+        {
+            "navn": "Wowerine",
+            "realName": "James Howlett",
+            "power": "Healing / Feral sences",
+            "weakness": "Magneto / Magnets",
+            "bildeSrc": "Bilder/Superhelter/wolverine.gif",
+            "info": "h"
+        }
+        ]
+   } 
