@@ -8,15 +8,14 @@
         dropableRegions();
     }
 
-
     var setEventHandlers = function () {
-        $("#leggTilAlle").click(function () {
+        $("#returnerAlle").click(function () {
+            value = 0;
             $("#dropZone .dragImg").detach().css({ top: 0, left: 0 }).appendTo($("#galleri"));
             $("table tr").not("tr:first-child").remove();
             $("#galleri .dragImg").draggable("enable");
             $("#status").progressbar({
-                value: 0
-
+                value: value
             });
         });
 
@@ -30,7 +29,6 @@
 
             });
         });
-
     }
 
     var displaySuperheroes = function () {
