@@ -50,7 +50,8 @@
     }
 
     var newGame = function () {
-        game.push(Math.floor(Math.random() * 4 + 1));
+        console.log("making a new game!");
+        game.push((Math.floor(Math.random() * 4) + 1));
         
     }
 
@@ -90,24 +91,25 @@
             sections.spalsh.style.display = "none";
             newGame();
             showCurrentGame();
-            console.log(game);
         }
     }
 
     var showCurrentGame = function () {
+        console.log("show current game");
         setTimeout(blinkButton(game[buttonToBlink]), 500);
     }
 
     var blinkButton = function (buttonId) {
+        console.log("game.length:" + game.length);
         setTimeout(function () {
-            console.log("button to click is" + buttonId);
+            console.log("button to click is buttonId: " + buttonId);
+            if(buttonToBlink < game.length) {
+                buttonToBlink++;
+                blinkButton(buttonToBlink);
+            } else {
+                game.buttonsClickable = true;
+            }
         }, 500);
-        
-        if (buttonToBlink <= game.length) {
-            blinkButton(buttonToBlink++);
-        } else {
-            game.buttonsClickable = true;
-        }
     }
 
     var btnToId = function(element) {
