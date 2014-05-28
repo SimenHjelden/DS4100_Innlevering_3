@@ -23,8 +23,28 @@ $( window ).ready(function(){
 					   "meta" : snippetMeta,
 					   "link" : snippetLink
 					};
+
+					console.log("push " + snippet.title + " to snippetList");
 					snippetList.push(snippet);
 					//console.log(snippetList);
+
+					if(unescape(location.hash.slice(1)) == snippet.title) {
+						console.log("found " + snippet.title);
+
+						saveSnippet(snippet);
+						$('#snippetTitle').html(snippet.title);
+						var metaOutput = "<h3>Tags:</h3>";
+						var metaList = snippet.meta.split(",");
+						$.each(metaList, function(m, meta){
+							metaOutput += "<li class='metaItem'>"+meta+"</li>";
+						})
+						$('#tags ul').html(metaOutput);
+						$('#tags ul li').click(function() {
+							snippetsearch.input.val($(this).text());
+							showsnippets($(this).text());
+							//result.ul.show();
+						});
+					}
 				});
 		    });
 		}
@@ -34,6 +54,18 @@ $( window ).ready(function(){
 		settObjekter();
 		settEventer();
 		settStr();
+
+		if(window.location.hash) {
+		  	// Fragment exists
+		  	console.log(unescape("Display " + location.hash.slice(1)) + " snippet");
+
+		  	$.each(snippetList, function(index, item){
+				console.log("test");
+			});
+
+		} else {
+		  	// Fragment doesn't exist
+		}
 	}
 
 	var settObjekter = function() {
@@ -86,10 +118,11 @@ $( window ).ready(function(){
 					console.log("Up key i pressed");
 				}
 			} else if(code == 13) {
-				var snippetHash = snippetList[result.selected - 1].title;
-				window.location.hash = encodeURIComponent(snippetHash);
-
-				//console.log(result.selected);
+				console.log("result list: " + result.selected);
+				var snippetId = $(".snippetItem:nth-child("+result.selected+")").text();
+				console.log("snippet id: " + snippetId);
+				window.location.hash = encodeURIComponent(snippetId);
+				result.ul.hide();
 			}
 		} else {
 			result.selected = 0;
@@ -97,8 +130,29 @@ $( window ).ready(function(){
 	});
 
 	$(window).on('hashchange',function(){
-		showsnippets(unescape(location.hash.slice(1)));
-		alert(unescape(location.hash.slice(1)));
+		//showsnippets(unescape(location.hash.slice(1)));
+		console.log("hash changed to " + unescape(location.hash.slice(1)));
+		result.selected = 0;
+		$("#search #result ul li").css("background-color", "#2ecc71");
+		$.each(snippetList, function(index, item){
+			if(item.title == unescape(location.hash.slice(1))) {
+				console.log("lets check out " + item.title);
+
+				saveSnippet(item);
+				$('#snippetTitle').html(item.title);
+				var metaOutput = "<h3>Tags:</h3>";
+				var metaList = item.meta.split(",");
+				$.each(metaList, function(m, meta){
+					metaOutput += "<li class='metaItem'>"+meta+"</li>";
+				})
+				$('#tags ul').html(metaOutput);
+				$('#tags ul li').click(function() {
+					snippetsearch.input.val($(this).text());
+					showsnippets($(this).text());
+					//result.ul.show();
+				});
+			}
+		});
 	});
 
 	var selectSnippetResult = function(snippetResultId) {
@@ -115,10 +169,12 @@ $( window ).ready(function(){
 	/* 
 		Gets input from user, 
 		compares it to snippetList.
-		Adds it to 
+		Shows it
 	*/
 	var showsnippets = function(value) {
+		console.log("starting show snippets function");
 		var input = value.replace(/ /g, '');
+		console.log("input is " + input);
 		result.flag = false;
 		$.each(snippetList, function(index, item){
 			var matched = false;
@@ -179,6 +235,7 @@ $( window ).ready(function(){
             	//removeFirstLineOf();
             }
         });
+        /*
         $('#snippet-container').click(function(){
         	$("#snippet-container").selectText();
         	$("#status").animate({"margin-top": 0}, 1000);
@@ -186,6 +243,7 @@ $( window ).ready(function(){
         setTimeout(function() {
         	$("#status").animate({"margin-top": "-100%"}, 1000);
         }, 1000);
+		*/
 	}
 
 	jQuery.fn.selectText = function(){
@@ -265,4 +323,4 @@ $( window ).ready(function(){
 			settStr();
 		});
 	})();
-})
+});
