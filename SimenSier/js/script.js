@@ -7,7 +7,8 @@
 
         setObjects()
         alignObjects();
-        setEventHandlers();       
+        setEventHandlers();      
+        user.printScore(); 
     }
 
  
@@ -17,6 +18,8 @@
 
         sections.spalsh = getElement("splashScreen");
         sections.statusScreen = getElement("statusScreen");
+        sections.statusContent = getElement("statusContent");
+        sections.statusScreenH1 = getElement("statusH1");
         sections.wrapper = getElement("gameWrapper");
         sections.scoreboard = getElement("scoreboard");
 
@@ -29,8 +32,9 @@
         user.input = getElement("userNameInput");
         user.name = getElement("username");
         user.score = 0;
-        user.printScore = getElement("score").innerHTML;
+        user.printScore = function(){getElement("score").innerHTML = user.score + " poeng"};
         user.guess = [];
+        user.currentGuessNumb = 0;
         buttonToBlink = 0;
 
         game.buttonsClickable = false;
@@ -39,6 +43,8 @@
     var alignObjects = function () {
         //console.log("Running the alignObjects function");
         setSenter(sections.wrapper);
+        setSenter(user.input);
+        setSenter(sections.statusContent);
     }
 
 
@@ -57,16 +63,17 @@
     var newGame = function () {
         //console.log("Entered newGame function");
         game.push((Math.floor(Math.random() * 4) + 1));
-        console.log("A new game is made, the game is " + game);
+        //console.log("A new game is made, the game is " + game);
     }
 
 
     var showCurrentGame = function () {
         //console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
-        setTimeout(blinkButton(game[buttonToBlink]), 500);
+        setTimeout(blinkButton(game[buttonToBlink], false), 500);
     }
 
     var nextRound = function(){       
+        //console.log("Start next round!");
         sections.statusScreen.style.display = "none";
         newGame();
         showCurrentGame();   
@@ -87,37 +94,73 @@
     var btnClicked = function (e) {
         //console.log("User clicked: "+ btnToId(this.id));
         if (game.buttonsClickable) {
+            //console.log("User clicked " + this.id);
+
+            blinkButton(btnToId(this.id), false)
+
+            //console.log("Save users guess of " +btnToId(this.id));
             user.guess.push(btnToId(this.id));
-            console.log("checking if userGuess: " + user.guess + " == game: " + game);
-            for(var i = 0; i < game.length-1; i++) {
-                if (user.guess[i] == game[i]) {
-                    console.log("users guess " + user.guess + " correct");
-                } else {
-                    console.log("users guess " + user.guess + " false");
-                    game.buttonsClickable = false;
+
+            console.log("Checking if user has guessed correct amount of " + game.length + " guesses");
+            var levelCleared = false;
+            if(user.guess.length == game.length) {
+                console.log("User guessed " + user.guess + ", correct guess is " + game);
+
+                if(user.guess[user.currentGuessNumb] == game[user.currentGuessNumb]) {
+                    user.score++;
+                    levelCleared = true;
                 }
-            }
-            
-            if(!game.buttonsClickable || user.guess.length == game.length) {
-                game.buttonsClickable = false;
-                //console.log("user.guess.length = " + user.guess.length + ", game.length = " + game.length);
-                user.guess = [];
-                console.log("user guesses cleared : user.guess = '" + user.guess +"'");
-                console.log("sets status screen to display block in 0.5s");
                 setTimeout(function() {
-                    sections.statusScreen.style.display = "block";
-                }, 500);
+                    userDoneGuessing(levelCleared);
+                }, 1000);
+                
+            } else {
+                //console.log("current guess number is " + user.currentGuessNumb);
+                //console.log("checking if users guess equals to game["+user.currentGuessNumb+"]");
+                if(user.guess[user.currentGuessNumb] == game[user.currentGuessNumb]) {
+                    //console.log("users guess matched game["+user.currentGuessNumb+"]");
+                    user.currentGuessNumb++;
+                } else {
+                    //console.log("User failed by guessed " + user.guess + ", correct guess would be " + game);
+                    setTimeout(function() {
+                        userDoneGuessing(levelCleared);
+                    }, 1000);
+                }
+                console.log("Do another guess!");
             }
         }
-        
+    }
+
+    var userDoneGuessing = function(levelCleared){
+        console.log("Clear user guess, currentGuessNumb, buttonToBlink and changed buttonsClickable to false");
+        user.guess = [];
+        user.currentGuessNumb = 0;
+        buttonToBlink = 0;
+        game.buttonsClickable = false;
+
+        if(levelCleared) {
+            console.log("user cleared the level");
+            sections.statusScreenH1.innerHTML = "RIKTIG, nå har du " + user.score + " poeng!";
+            buttons.nextRound.innerHTML = "Videre til neste runde";
+        } else {
+            console.log("user failed to clear level");
+            game = [];
+            sections.statusScreenH1.innerHTML = "FEIL, du klarte å få " + user.score + " totalt!";
+            user.score = 0;
+            buttons.nextRound.innerHTML = "Start på nytt";
+        }
+
+        console.log("Display status screen");
+        user.printScore();
+        sections.statusScreen.style.display = "block";
     }
 
     var splashInputChange = function (e) {
         //console.log("User typing username: " + user.input.value);
         if (e.keyCode == 13) {
             var input = user.input.value.toLowerCase();
-            user.name.innerHTML = input.charAt(0).toUpperCase(); +input.slice(1);
-            user.printScore = user.score + " poeng";
+            user.name.innerHTML = input.charAt(0).toUpperCase() + input.slice(1);
+            user.printScore;
 
             user.input.removeEventListener("keyup", splashInputChange, false);
             sections.spalsh.style.display = "none";
@@ -128,28 +171,28 @@
 
 
 
-    var blinkButton = function (buttonId) {
-        //console.log("Running blinkButton(" + buttonId + ")");
+    var blinkButton = function (buttonId, blinkSingleButton) {
         setTimeout(function () {
-            //console.log("waiting 0.5 sec before starting blink session");
-            //console.log("Button to click is buttonId: " + buttonId);
             var buttonToBlinkCurrBackgroundColor = getButtonBackgroundColor(buttonId);
             //console.log("buttonId " + game[buttonToBlink] + " is at game[" + buttonToBlink + "]");
             setButtonBackgroundColor(buttonId, "#333");
             setTimeout(function() {
                 //console.log("Set background back to default");
                 setButtonBackgroundColor(buttonId, buttonToBlinkCurrBackgroundColor);
-                if(buttonToBlink < game.length - 1) {
-                    //console.log("Increasing buttonToBlink value by one");
-                    buttonToBlink++;
-                    //console.log("buttonToBlink is " + buttonToBlink);
-                    blinkButton(game[buttonToBlink]);
-                } else {
-                    //console.log("game.buttonsClickable = true");
-                    game.buttonsClickable = true;
+                if(!blinkSingleButton) {
+                    if(buttonToBlink < game.length - 1) {
+                        //console.log("Increasing buttonToBlink value by one");
+                        buttonToBlink++;
+                        //console.log("buttonToBlink is " + buttonToBlink);
+                        blinkButton(game[buttonToBlink], false);
+                    } else {
+                        //console.log("game.buttonsClickable = true");
+                        game.buttonsClickable = true;
+                        console.log("Time for user input");
+                    }
                 }
             }, 500);
-        }, 500);
+        }, 100);
     }
 
     var getButtonBackgroundColor = function(id) {
@@ -161,8 +204,7 @@
             return "#f39c12";
         } else if(id == 4) {
             return "#2980b9";
-        }
-        
+        }   
     }
 
     var setButtonBackgroundColor = function(buttonId, color) {
@@ -195,7 +237,6 @@
             case "bottomRight":
                 return 4;
                 break;
-
         }
     }
 
