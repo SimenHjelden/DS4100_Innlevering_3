@@ -10,6 +10,33 @@ body {
 	max-width: 960px;
 	margin: auto;
 }
+.sectionTitle {
+	width: 70px;
+	position: absolute;
+	margin-left: -80px;
+	text-align: center;
+	font-size: 1.3em;
+	font-weight: 900;
+}
+#search .sectionTitle {
+	color: #333;
+}
+#search:hover  .sectionTitle {
+	color: #fff;
+}
+#code .sectionTitle {
+	color: #fff;
+}
+#code:hover  .sectionTitle {
+	color: #333;
+}
+#demo .sectionTitle {
+	color: #27ae60;
+}
+#demo:hover .sectionTitle{
+	color: #fff;
+}
+
 
 /* SEARCH SECTION */
 #search {
