@@ -5,6 +5,7 @@
 
 #wrapper {
     width:1024px;
+    margin: 25px auto;
     padding:0px 0px 25px 0px;
     background-color: rgb(216, 217, 218);
 }
@@ -67,6 +68,7 @@
 }
 
 #alternativesContainer ul li:hover {
+    cursor:pointer;
     background-color:rgb(59, 110, 143); 
 }
 
@@ -74,11 +76,17 @@
     width:120px;
     height:40px;
     display:inline-block;
-    background-color: rgb(111, 38, 113);
+    background-color: rgb(127, 140, 141);
     border:none;
     font-family:Arial, sans-serif;
     text-align:center;
     color:rgb(255, 255, 255);
+}
+
+
+#mainContent input[type=button]:hover {
+    cursor:pointer;
+    opacity:0.7;
 }
 
 #mainFooter {

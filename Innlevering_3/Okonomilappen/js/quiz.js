@@ -39,15 +39,6 @@
     }
 
 
-    var setSenter = function (element) {
-        element.style.top = ((window.innerHeight / 2) - element.offsetHeight / 2) + "px";
-        element.style.left = ((window.innerWidth / 2) - element.offsetWidth / 2) + "px";
-    }
-
-    var alignObjets = function () {
-        setSenter(wrapper);
-    }
-
     window.onload = init;
 
 })();

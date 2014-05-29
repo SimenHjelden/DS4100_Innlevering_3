@@ -42,7 +42,7 @@
                 });
             }
         });
-    };
+    }
 
     var dropableRegions = function () {
         
