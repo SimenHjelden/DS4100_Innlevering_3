@@ -39,7 +39,6 @@
     var alignObjects = function () {
         console.log("Running the alignObjects function");
         setSenter(sections.wrapper);
-        setSenter(sections.statusScreen);
     }
 
 
@@ -49,6 +48,7 @@
         buttons.topRight.addEventListener("click", btnClicked, false);
         buttons.bottomLeft.addEventListener("click", btnClicked, false);
         buttons.bottomRight.addEventListener("click", btnClicked, false);
+        buttons.nextRound.addEventListener("click", nextRound, false);
 
         user.input.addEventListener("keyup", splashInputChange, false);
         
@@ -60,6 +60,17 @@
         console.log("A new game is made, the game is " + game);
     }
 
+
+    var showCurrentGame = function () {
+        console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
+        setTimeout(blinkButton(game[buttonToBlink]), 500);
+    }
+
+    var nextRound = function(){       
+        sections.statusScreen.style.display = "none";
+        newGame();
+        showCurrentGame();   
+    }
   
 
     //HJELPEMETODER
@@ -78,15 +89,18 @@
         if (game.buttonsClickable) {
             console.log("user.guess = " + btnToId(this.id) + " correct = " + game[0]);
             user.guess.push(btnToId(this.id));
-            var userGuesses = true;
-            for (var i = 0; i <= user.guess.length-1; i++) {
-                if (user.guess[i] == game[i]) {
-                    console.log("users guess " + user.guess + " correct");
-                } else {
-                    userGuesses = false;
-                    console.log("users guess " + user.guess + " false");
+            for (var i = 0; i < game.length; i++) {
+                var userGuesses = true;
+                for (var j = 0; j < user.guess.length - 1; j++) {
+                    if (user.guess[j] == game[j]) {
+                        console.log("users guess " + user.guess + " correct");
+                    } else {
+                        userGuesses = false;
+                        console.log("users guess " + user.guess + " false");
+                    }
                 }
             }
+            
             game.buttonsClickable = false;
             setTimeout(function() {
                 sections.statusScreen.style.display = "block";
@@ -108,10 +122,7 @@
         }
     }
 
-    var showCurrentGame = function () {
-        console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
-        setTimeout(blinkButton(game[buttonToBlink]), 500);
-    }
+
 
     var blinkButton = function (buttonId) {
         console.log("Running blinkButton(" + buttonId + ")");
