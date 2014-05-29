@@ -1,9 +1,10 @@
 ﻿(function () {
 
-    var questionContainer, alternativesContainer, btnSubmit, currentQuestion;
+    var wrapper, questionContainer, alternativesContainer, btnSubmit, currentQuestion;
 
     var init = function () {
         setObjects();
+        alignObjets();
         getJSON();
     }
 
@@ -11,13 +12,12 @@
         questionContainer = $("#questionContainer");
         alternativesContainer = $("#alternativesContainer");
         btnSubmit = $("#btnSubmit");
+        wrapper = $("#wrapper");
         currentQuestion = 0;
     }
 
     var setEventHandlers = function () {
         btnSubmit.click(function () {
-
-
         });
     }
 
@@ -36,6 +36,16 @@
                 });
             }
         });
+    }
+
+
+    var setSenter = function (element) {
+        element.style.top = ((window.innerHeight / 2) - element.offsetHeight / 2) + "px";
+        element.style.left = ((window.innerWidth / 2) - element.offsetWidth / 2) + "px";
+    }
+
+    var alignObjets = function () {
+        setSenter(wrapper);
     }
 
     window.onload = init;
