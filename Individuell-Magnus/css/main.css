@@ -125,6 +125,5 @@ isindex {
 #demo #renderedOutput {
 	width: 640px;
 	padding: 50px;
-	background-color: #fff;
-	border: solid 1px #ddd;
+	border: dotted 1px #ddd;
 }
