@@ -3,6 +3,8 @@
     var sections = [], buttons = [], user = [], game = [], buttonToBlink;
 
     var init = function () {
+        console.log("Running the init function");
+
         setObjects()
         alignObjects();
         setEventHandlers();       
@@ -11,6 +13,8 @@
  
 
     var setObjects = function () {
+        console.log("Running the setObjects function");
+
         sections.spalsh = getElement("splashScreen");
         sections.statusScreen = getElement("statusScreen");
         sections.wrapper = getElement("gameWrapper");
@@ -33,13 +37,14 @@
     }
 
     var alignObjects = function () {
+        console.log("Running the alignObjects function");
         setSenter(sections.wrapper);
         setSenter(sections.statusScreen);
     }
 
 
     var setEventHandlers = function () {
-        console.log("setting the mood");
+        console.log("Running the setEventHandlers function");
         buttons.topLeft.addEventListener("click", btnClicked, false);
         buttons.topRight.addEventListener("click", btnClicked, false);
         buttons.bottomLeft.addEventListener("click", btnClicked, false);
@@ -50,9 +55,9 @@
     }
 
     var newGame = function () {
-        console.log("making a new game!");
+        console.log("Entered newGame function");
         game.push((Math.floor(Math.random() * 4) + 1));
-        
+        console.log("A new game is made, the game is " + game);
     }
 
   
@@ -63,25 +68,34 @@
     }
 
     var setSenter = function (element) {
-        console.log(element.id);
+        console.log("Setting " + element.id + " to align center");
         element.style.top = ((window.innerHeight/2) - element.offsetHeight/2) + "px";
         element.style.left = ((window.innerWidth/2) - element.offsetWidth/2) + "px";
     }
 
     var btnClicked = function (e) {
-        console.log("user clicked: "+ btnToId(this.id));
+        console.log("User clicked: "+ btnToId(this.id));
         if (game.buttonsClickable) {
-            console.log("user.guess = " + buttonToId(this.id) + " currect = " + game[0]);
+            console.log("user.guess = " + btnToId(this.id) + " correct = " + game[0]);
             user.guess.push(btnToId(this.id));
-            for (var i = 0; i <= user.guess.length; i++) {
+            var userGuesses = true;
+            for (var i = 0; i <= user.guess.length-1; i++) {
                 if (user.guess[i] == game[i]) {
-                    console.log("users guess " + user.guess + "correct");
+                    console.log("users guess " + user.guess + " correct");
+                } else {
+                    userGuesses = false;
+                    console.log("users guess " + user.guess + " false");
                 }
             }
+            game.buttonsClickable = false;
+            setTimeout(function() {
+                sections.statusScreen.style.display = "block";
+            }, 500);
         }
     }
 
     var splashInputChange = function (e) {
+        console.log("User typing username: " + user.input.value);
         if (e.keyCode == 13) {
             var input = user.input.value.toLowerCase();
             user.name.innerHTML = input.charAt(0).toUpperCase(); +input.slice(1);
@@ -95,21 +109,61 @@
     }
 
     var showCurrentGame = function () {
-        console.log("show current game");
+        console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
         setTimeout(blinkButton(game[buttonToBlink]), 500);
     }
 
     var blinkButton = function (buttonId) {
-        console.log("game.length:" + game.length);
+        console.log("Running blinkButton(" + buttonId + ")");
         setTimeout(function () {
-            console.log("button to click is buttonId: " + buttonId);
-            if(buttonToBlink < game.length) {
-                buttonToBlink++;
-                blinkButton(buttonToBlink);
-            } else {
-                game.buttonsClickable = true;
-            }
+            console.log("waiting 0.5 sec before starting blink session");
+            console.log("Button to click is buttonId: " + buttonId);
+            var buttonToBlinkCurrBackgroundColor = getButtonBackgroundColor(buttonId);
+            console.log("buttonId " + game[buttonToBlink] + " is at game[" + buttonToBlink + "]");
+            setButtonBackgroundColor(buttonId, "#333");
+            setTimeout(function() {
+                console.log("Set background back to default");
+                setButtonBackgroundColor(buttonId, buttonToBlinkCurrBackgroundColor);
+                if(buttonToBlink < game.length - 1) {
+                    console.log("Increasing buttonToBlink value by one");
+                    buttonToBlink++;
+                    console.log("buttonToBlink is " + buttonToBlink);
+                    blinkButton(game[buttonToBlink]);
+                } else {
+                    console.log("game.buttonsClickable = true");
+                    game.buttonsClickable = true;
+                }
+            }, 500);
         }, 500);
+    }
+
+    var getButtonBackgroundColor = function(id) {
+        if(id == 1) {
+            return "#27ae60";
+        } else if(id == 2) {
+            return "#c0392b";
+        } else if(id == 3) {
+            return "#f39c12";
+        } else if(id == 4) {
+            return "#2980b9";
+        }
+        
+    }
+
+    var setButtonBackgroundColor = function(buttonId, color) {
+        if(buttonId == 1) {
+            //buttonToBlinkCurrBackgroundColor = buttons.topLeft.style.backgroundColor;
+            buttons.topLeft.style.backgroundColor = color;
+        } else if(buttonId == 2) {
+            //buttonToBlinkCurrBackgroundColor = buttons.topRight.style.backgroundColor;
+            buttons.topRight.style.backgroundColor = color;
+        } else if(buttonId == 3) {
+            //buttonToBlinkCurrBackgroundColor = buttons.bottomLeft.style.backgroundColor;
+            buttons.bottomLeft.style.backgroundColor = color;
+        } else if(buttonId == 4) {
+            //buttonToBlinkCurrBackgroundColor = buttons.bottomRight.style.backgroundColor;
+            buttons.bottomRight.style.backgroundColor = color;
+        }
     }
 
     var btnToId = function(element) {
