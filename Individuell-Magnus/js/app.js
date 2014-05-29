@@ -90,8 +90,12 @@ $( window ).ready(function(){
 				if(result.prevInput != result.currInput) {
 					showsnippets(result.currInput);
 				}
+				if(result.prevInput != result.currInput) {
+					result.ul.show();
+				}
 				result.prevInput = result.currInput;
-				result.ul.show();
+
+				
 				//console.log(result.list);
 			} else {
 				resetResults();
@@ -109,6 +113,7 @@ $( window ).ready(function(){
 					selectSnippetResult(result.selected);
 					console.log(result.selected);
 					console.log("Down key i pressed");
+					result.ul.show();
 				}
 			}else if(code == 38) {
 				if(result.selected > 1) {
@@ -116,6 +121,7 @@ $( window ).ready(function(){
 					selectSnippetResult(result.selected);
 					console.log(result.selected);
 					console.log("Up key i pressed");
+					result.ul.show();
 				}
 			} else if(code == 13) {
 				console.log("result list: " + result.selected);
@@ -149,7 +155,7 @@ $( window ).ready(function(){
 				$('#tags ul li').click(function() {
 					snippetsearch.input.val($(this).text());
 					showsnippets($(this).text());
-					//result.ul.show();
+					result.ul.show();
 				});
 			}
 		});
@@ -235,11 +241,12 @@ $( window ).ready(function(){
             	//removeFirstLineOf();
             }
         });
-        /*
+        
         $('#snippet-container').click(function(){
         	$("#snippet-container").selectText();
         	$("#status").animate({"margin-top": 0}, 1000);
         });
+        /*
         setTimeout(function() {
         	$("#status").animate({"margin-top": "-100%"}, 1000);
         }, 1000);
