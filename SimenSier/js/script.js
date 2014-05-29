@@ -3,7 +3,7 @@
     var sections = [], buttons = [], user = [], game = [], buttonToBlink;
 
     var init = function () {
-        console.log("Running the init function");
+        //console.log("Running the init function");
 
         setObjects()
         alignObjects();
@@ -13,7 +13,7 @@
  
 
     var setObjects = function () {
-        console.log("Running the setObjects function");
+        //console.log("Running the setObjects function");
 
         sections.spalsh = getElement("splashScreen");
         sections.statusScreen = getElement("statusScreen");
@@ -37,13 +37,13 @@
     }
 
     var alignObjects = function () {
-        console.log("Running the alignObjects function");
+        //console.log("Running the alignObjects function");
         setSenter(sections.wrapper);
     }
 
 
     var setEventHandlers = function () {
-        console.log("Running the setEventHandlers function");
+        //console.log("Running the setEventHandlers function");
         buttons.topLeft.addEventListener("click", btnClicked, false);
         buttons.topRight.addEventListener("click", btnClicked, false);
         buttons.bottomLeft.addEventListener("click", btnClicked, false);
@@ -55,14 +55,14 @@
     }
 
     var newGame = function () {
-        console.log("Entered newGame function");
+        //console.log("Entered newGame function");
         game.push((Math.floor(Math.random() * 4) + 1));
         console.log("A new game is made, the game is " + game);
     }
 
 
     var showCurrentGame = function () {
-        console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
+        //console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
         setTimeout(blinkButton(game[buttonToBlink]), 500);
     }
 
@@ -79,37 +79,41 @@
     }
 
     var setSenter = function (element) {
-        console.log("Setting " + element.id + " to align center");
+        //console.log("Setting " + element.id + " to align center");
         element.style.top = ((window.innerHeight/2) - element.offsetHeight/2) + "px";
         element.style.left = ((window.innerWidth/2) - element.offsetWidth/2) + "px";
     }
 
     var btnClicked = function (e) {
-        console.log("User clicked: "+ btnToId(this.id));
+        //console.log("User clicked: "+ btnToId(this.id));
         if (game.buttonsClickable) {
-            console.log("user.guess = " + btnToId(this.id) + " correct = " + game[0]);
             user.guess.push(btnToId(this.id));
-            for (var i = 0; i < game.length; i++) {
-                var userGuesses = true;
-                for (var j = 0; j < user.guess.length - 1; j++) {
-                    if (user.guess[j] == game[j]) {
-                        console.log("users guess " + user.guess + " correct");
-                    } else {
-                        userGuesses = false;
-                        console.log("users guess " + user.guess + " false");
-                    }
+            console.log("checking if userGuess: " + user.guess + " == game: " + game);
+            for(var i = 0; i < game.length-1; i++) {
+                if (user.guess[i] == game[i]) {
+                    console.log("users guess " + user.guess + " correct");
+                } else {
+                    console.log("users guess " + user.guess + " false");
+                    game.buttonsClickable = false;
                 }
             }
             
-            game.buttonsClickable = false;
-            setTimeout(function() {
-                sections.statusScreen.style.display = "block";
-            }, 500);
+            if(!game.buttonsClickable || user.guess.length == game.length) {
+                game.buttonsClickable = false;
+                //console.log("user.guess.length = " + user.guess.length + ", game.length = " + game.length);
+                user.guess = [];
+                console.log("user guesses cleared : user.guess = '" + user.guess +"'");
+                console.log("sets status screen to display block in 0.5s");
+                setTimeout(function() {
+                    sections.statusScreen.style.display = "block";
+                }, 500);
+            }
         }
+        
     }
 
     var splashInputChange = function (e) {
-        console.log("User typing username: " + user.input.value);
+        //console.log("User typing username: " + user.input.value);
         if (e.keyCode == 13) {
             var input = user.input.value.toLowerCase();
             user.name.innerHTML = input.charAt(0).toUpperCase(); +input.slice(1);
@@ -125,23 +129,23 @@
 
 
     var blinkButton = function (buttonId) {
-        console.log("Running blinkButton(" + buttonId + ")");
+        //console.log("Running blinkButton(" + buttonId + ")");
         setTimeout(function () {
-            console.log("waiting 0.5 sec before starting blink session");
-            console.log("Button to click is buttonId: " + buttonId);
+            //console.log("waiting 0.5 sec before starting blink session");
+            //console.log("Button to click is buttonId: " + buttonId);
             var buttonToBlinkCurrBackgroundColor = getButtonBackgroundColor(buttonId);
-            console.log("buttonId " + game[buttonToBlink] + " is at game[" + buttonToBlink + "]");
+            //console.log("buttonId " + game[buttonToBlink] + " is at game[" + buttonToBlink + "]");
             setButtonBackgroundColor(buttonId, "#333");
             setTimeout(function() {
-                console.log("Set background back to default");
+                //console.log("Set background back to default");
                 setButtonBackgroundColor(buttonId, buttonToBlinkCurrBackgroundColor);
                 if(buttonToBlink < game.length - 1) {
-                    console.log("Increasing buttonToBlink value by one");
+                    //console.log("Increasing buttonToBlink value by one");
                     buttonToBlink++;
-                    console.log("buttonToBlink is " + buttonToBlink);
+                    //console.log("buttonToBlink is " + buttonToBlink);
                     blinkButton(game[buttonToBlink]);
                 } else {
-                    console.log("game.buttonsClickable = true");
+                    //console.log("game.buttonsClickable = true");
                     game.buttonsClickable = true;
                 }
             }, 500);
