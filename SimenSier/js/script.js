@@ -69,7 +69,7 @@
 
     var showCurrentGame = function () {
         //console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
-        setTimeout(blinkButton(game[buttonToBlink]), 500);
+        setTimeout(blinkButton(game[buttonToBlink], false), 500);
     }
 
     var nextRound = function(){       
@@ -96,6 +96,8 @@
         if (game.buttonsClickable) {
             //console.log("User clicked " + this.id);
 
+            blinkButton(btnToId(this.id), false)
+
             //console.log("Save users guess of " +btnToId(this.id));
             user.guess.push(btnToId(this.id));
 
@@ -110,7 +112,7 @@
                 }
                 setTimeout(function() {
                     userDoneGuessing(levelCleared);
-                }, 500);
+                }, 1000);
                 
             } else {
                 //console.log("current guess number is " + user.currentGuessNumb);
@@ -122,7 +124,7 @@
                     //console.log("User failed by guessed " + user.guess + ", correct guess would be " + game);
                     setTimeout(function() {
                         userDoneGuessing(levelCleared);
-                    }, 500);
+                    }, 1000);
                 }
                 console.log("Do another guess!");
             }
@@ -138,13 +140,13 @@
 
         if(levelCleared) {
             console.log("user cleared the level");
-            sections.statusScreenH1.innerHTML = "RIKTIG";
+            sections.statusScreenH1.innerHTML = "RIKTIG, nå har du " + user.score + " poeng!";
             buttons.nextRound.innerHTML = "Videre til neste runde";
         } else {
             console.log("user failed to clear level");
             game = [];
+            sections.statusScreenH1.innerHTML = "FEIL, du klarte å få " + user.score + " totalt!";
             user.score = 0;
-            sections.statusScreenH1.innerHTML = "FEIL";
             buttons.nextRound.innerHTML = "Start på nytt";
         }
 
@@ -169,7 +171,7 @@
 
 
 
-    var blinkButton = function (buttonId) {
+    var blinkButton = function (buttonId, blinkSingleButton) {
         setTimeout(function () {
             var buttonToBlinkCurrBackgroundColor = getButtonBackgroundColor(buttonId);
             //console.log("buttonId " + game[buttonToBlink] + " is at game[" + buttonToBlink + "]");
@@ -177,18 +179,20 @@
             setTimeout(function() {
                 //console.log("Set background back to default");
                 setButtonBackgroundColor(buttonId, buttonToBlinkCurrBackgroundColor);
-                if(buttonToBlink < game.length - 1) {
-                    //console.log("Increasing buttonToBlink value by one");
-                    buttonToBlink++;
-                    //console.log("buttonToBlink is " + buttonToBlink);
-                    blinkButton(game[buttonToBlink]);
-                } else {
-                    //console.log("game.buttonsClickable = true");
-                    game.buttonsClickable = true;
-                    console.log("Time for user input");
+                if(!blinkSingleButton) {
+                    if(buttonToBlink < game.length - 1) {
+                        //console.log("Increasing buttonToBlink value by one");
+                        buttonToBlink++;
+                        //console.log("buttonToBlink is " + buttonToBlink);
+                        blinkButton(game[buttonToBlink], false);
+                    } else {
+                        //console.log("game.buttonsClickable = true");
+                        game.buttonsClickable = true;
+                        console.log("Time for user input");
+                    }
                 }
             }, 500);
-        }, 500);
+        }, 100);
     }
 
     var getButtonBackgroundColor = function(id) {
@@ -200,8 +204,7 @@
             return "#f39c12";
         } else if(id == 4) {
             return "#2980b9";
-        }
-        
+        }   
     }
 
     var setButtonBackgroundColor = function(buttonId, color) {
@@ -234,7 +237,6 @@
             case "bottomRight":
                 return 4;
                 break;
-
         }
     }
 
