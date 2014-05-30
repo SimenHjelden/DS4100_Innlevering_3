@@ -1,10 +1,9 @@
 ﻿(function () {
 
-    var wrapper, questionContainer, alternativesContainer, btnSubmit, currentQuestion;
+    var wrapper, questionContainer, alternativesContainer, btnSubmit, btnNext, currentQuestion;
 
     var init = function () {
         setObjects();
-        alignObjets();
         getJSON();
     }
 
@@ -19,25 +18,26 @@
     var setEventHandlers = function () {
         btnSubmit.click(function () {
         });
-    }
+        btnNext.click(function () {
 
-    var getJSON = function(){
-        $.ajax({
-            url: "js/Oppgaver.json",
-            dataType: "json",
-            success: function (data) {
-                $.each(data.Oppgaver, function(i, item) {
-                    if (i == currentQuestion) {
-                        questionContainer.append("<h2>Spørsmål: " + i + item.Spm + "</h2>");
-                        $.each(item.Alternativ, function (i, alternativ) {
-                            alternativesContainer.append("<input type='radio' class='radioAlternativ' value='" + alternativ.Text + "'/>");
-                        });
-                    }
-                });
-            }
         });
     }
 
+    var getJSON = function () {
+        $.getJSON("js/Oppgaver.json").done(function (data) {
+                $.each(data.Oppgaver, function (i, item) {
+                    if (i == currentQuestion) {
+                        //spørsmålet
+                        $("#questionContainer").append("<h2>" + item.Spm + "</h2><p>Spørsmål " + i + "</p></br>");
+                        //alternativ
+                        $.each(item.alternativ, function (a, alt) {
+                            $("#alternativesContainer ul").append("<li>" + alt.Text + "<li>");
+                            
+                        });
+                    }
+                }); 
+            });
+        }
 
     window.onload = init;
 

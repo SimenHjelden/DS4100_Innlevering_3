@@ -69,7 +69,7 @@
 
     var showCurrentGame = function () {
         //console.log("Running showCurrentGame function \ndoing a timeout on blinkButton(buttonToBlink)");
-        setTimeout(blinkButton(game[buttonToBlink], false), 500);
+        setTimeout(blinkButton(game[buttonToBlink], false), 250);
     }
 
     var nextRound = function(){       
@@ -140,13 +140,14 @@
 
         if(levelCleared) {
             console.log("user cleared the level");
-            sections.statusScreenH1.innerHTML = "RIKTIG, nå har du " + user.score + " poeng!";
+            sections.statusScreenH1.innerHTML = "RIKTIG <br/> Du har  " + user.score + " poeng!";
             buttons.nextRound.innerHTML = "Videre til neste runde";
         } else {
             console.log("user failed to clear level");
             game = [];
-            sections.statusScreenH1.innerHTML = "FEIL, du klarte å få " + user.score + " totalt!";
+            sections.statusScreenH1.innerHTML = "FEIL <br/> Du fikk totalt " + user.score;
             user.score = 0;
+            buttons.nextRound.style.backgroundColor = "#c0392b";
             buttons.nextRound.innerHTML = "Start på nytt";
         }
 
@@ -191,7 +192,7 @@
                         console.log("Time for user input");
                     }
                 }
-            }, 500);
+            }, 250);
         }, 100);
     }
 
