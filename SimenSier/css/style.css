@@ -15,6 +15,9 @@ body {
 	z-index: 1;
     text-align:center;
 }
+#splashScreen .logo {
+	margin-top: 50px;
+}
 
 
 #start {
