@@ -1,7 +1,7 @@
 $( window ).ready(function(){
 
 	//Deklarer variabler
-	var snippetsearch = {}, result = {}, mainContent;
+	var snippetsearch = {}, result = {}, mainContent, switchBtn = [], demoContent;
 	var snippetList = [];
 
 	$.ajax({
@@ -70,6 +70,7 @@ $( window ).ready(function(){
 
 	var settObjekter = function() {
 		mainContent = $("#code");
+		demoContent = $("#demo");
 
 		snippetsearch.input = $("#snippetsearchinput");
 
@@ -80,6 +81,11 @@ $( window ).ready(function(){
 		result.currInput = "";
 		result.prevInput = "";
 		result.selected = 0;
+
+		switchBtn.btn = $("#switchBtn");
+		switchBtn.status = true;
+		switchBtn.btn.html("<p>Se demo</p>");
+		demoContent.hide();
 	}
 
 	var settEventer = function() {
@@ -100,6 +106,16 @@ $( window ).ready(function(){
 			} else {
 				resetResults();
 			}
+		});
+		switchBtn.btn.click(function(){
+			if(switchBtn.status) {
+				demoContent.show();
+				switchBtn.btn.html("<p>Se koden</p>");
+			} else {
+				switchBtn.btn.html("<p>Se demo</p>");
+				demoContent.hide();
+			}
+			switchBtn.status = !switchBtn.status;
 		});
 	}
 

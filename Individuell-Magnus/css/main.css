@@ -26,6 +26,8 @@ body {
 }
 #code .sectionTitle {
 	color: #fff;
+	-webkit-transition: all 0.5s ease;  /* For Safari 3.1 to 6.0 */
+	transition: all 0.5s ease;
 }
 #code:hover  .sectionTitle {
 	color: #333;
@@ -34,6 +36,26 @@ body {
 	color: #27ae60;
 }
 #demo:hover .sectionTitle{
+	color: #fff;
+}
+
+#switchBtn {
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	-webkit-transition: all 0.5s ease;  /* For Safari 3.1 to 6.0 */
+	transition: all 0.5s ease;
+}
+#switchBtn:hover {
+	background-color: #222;
+}
+.metaItem {
+	padding-left: 10px;
+}
+.metaItem:hover {
+	background-color: #e74c3c;
 	color: #fff;
 }
 
@@ -117,9 +139,13 @@ isindex {
 
 /* DEMO SECTION */
 #demo {
-	min-height: 200px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-top: 124px;
 	padding-top: 50px;
-	padding-bottom: 50px;
 	background-color: #2ecc71;
 }
 #demo #renderedOutput {
