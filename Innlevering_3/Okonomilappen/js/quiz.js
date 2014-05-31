@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var question, alternatives, correctAnswer, btn = [], currentQuestion;
+    var question, alternatives, correctAnswer, btn = [], currentQuestion, points, score;
 
     var init = function () {
         setObjects();
@@ -12,13 +12,18 @@
         question = $("#questionContainer");
         alternatives = $("#alternativesContainer ul");
         btn.next = $("#btnNext");
+        btn.clickable = false;
         currentQuestion = 0;
+        score = $("#score");
+        points = 0;
     }
 
     var setEventHandlers = function () {
-        btn.next.click(function () {
-            console.log("i twerks : btn.next.click");
-        });
+        if (btn.clickable) {
+            btn.next.click(function () {
+                console.log("i twerks : btn.next.click");
+            });
+        }
     }
 
     var getJSON = function () {
@@ -54,12 +59,22 @@
                             correctAnswer = alt.Tekst;
                         }
                     });
-                    $(".alternative").click(function() {
-                        if($(this).text() === correctAnswer) {
-                            console.log("riktig");
-                        }
+                    $(".alternative").click(function () {
                         $(".alternative").css("background-color", "rgb(128, 161, 182)");
                         $(this).css("background-color", "rgb(59, 110, 143)");
+                        $(".alternative").off();
+                        if ($(this).text() === correctAnswer) {
+                            $(this).css("background-color", "rgb(160, 207, 103)");
+                            points += 100;
+                            console.log("riktig");
+                        }
+                        else {
+                            $(this).css("background-color", "rgb(181, 30, 58)");
+                            console.log("feil");
+                        }
+                        btn.clickable = true;
+                        btn.next.css("background-color", "rgb(111, 38, 113)");
+                        score.html("Score: " + points);
                     });
                 }
             }); 

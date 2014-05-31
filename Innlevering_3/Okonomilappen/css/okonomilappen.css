@@ -104,3 +104,7 @@
     text-align:center;
     margin-bottom:0px;
 }
+
+.correct {
+    background-color:rgb(160, 207, 103);
+}
