@@ -1,7 +1,7 @@
 ﻿// JavaScript Document
 (function () {
 
-    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval, runningInterval, divIndex;
+    var container, btnGenerer, btnStopp, btnEndreFarge, divsPerSec, interval, runningInterval, divIndex, running = false;;
 
     var init = function() {
         setObjects();
@@ -27,12 +27,16 @@
 
     var startInterval = function() {
         //console.log("start interval");
-        genererDiv();
+        if(!running) {
+            genererDiv();
+            running = true;
+        }
     }
 
     var stoppInterval = function() {
         //console.log("stop interval");
         clearInterval(interval);
+        running = false;
     }
 
     var endreFarge = function() {
