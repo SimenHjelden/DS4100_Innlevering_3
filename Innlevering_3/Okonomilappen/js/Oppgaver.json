@@ -1,37 +1,38 @@
 ﻿{"Oppgaver":[
     {
-    "Spm":"På hvilken måte innvirker prisstigningen (inflasjonen) i samfunnet på din sparing?", 
-    "Alternativer":[
-    {"Tekst":"Ingenting, fordi bankinnskudd er 100 prosent trygge", "Value": false},
-    {"Tekst":"Prisstigningen medfører at det jeg sparer i dag blir mindre verdt i fremtiden ", "Value": true},
-    {"Tekst":"Bankinnskuddet mitt vokser automatisk i takt med prisstigningen", "Value": false}
-    ]},
-   {
-    "Spm": "Hva menes med rentesrente?", 
-    "Alternativer":[
-    {"Tekst":"Renteinntekter på renteinntektene", "Value":true},
-    {"Tekst":"Bankens beste innskuddsrente", "Value":false},
-    {"Tekst":"Renten etter at du har betalt skatt", "Value":false}
-    ]},
-   {
-    "Spm":"Hva betyr det å ha avdragsfrihet på lånet?", 
-    "Alternativer":[
-    {"Tekst":"Du slipper å betale renter og avdrag på lånet", "Value:false},
-    {"Tekst":"Lånet ditt øker fordi du ikke betaler avdrag", "Value":false},
-    {"Tekst":"Du betaler renter, men utsetter betaling av avdr", "Value":true}
-    ]},
-   {
-    "Spm": "Spareavtale er en smart måte å spare på. Hva innebærer dette?", 
-    "Alternativer":[
-    {"Tekst":"Jeg avtaler at banken overfører et fast, månedlig beløp fra bruks- til sparekontoen", "Value":true},
-    {"Tekst":"Jeg setter inn et stort beløp i banken, og lar det stå urørt frem til en bestemt dato ", "Value":false},
-    {"Tekst":"Jeg avtaler med banken at sparepengene kun kan brukes på et bestemt formål", "Value":false}
-    ]},
-   {
-    "Spm": "BSU står for Boligsparing for ungdom (under 34 år). Hvorfor er ordningen så populær?", 
-    "Alternativer":[
-    {"Tekst":"Fordi det er den eneste måten ungdom kan spare på", "Value":false},
-    {"Tekst":"Fordi du må ha BSU for å kunne kjøpe egen bolig ", "Value":false},
-    {"Tekst":"Fordi BSU både gir en god rente og et stort skattefradrag", "Value":true}
-    ]}
+        "Spm":"På hvilken måte innvirker prisstigningen (inflasjonen) i samfunnet på din sparing?",
+        "Alternativer":[
+            {"Tekst":"Ingenting, fordi bankinnskudd er 100 prosent trygge", "Value": false},
+            {"Tekst":"Prisstigningen medfører at det jeg sparer i dag blir mindre verdt i fremtiden ", "Value": true},
+            {"Tekst":"Bankinnskuddet mitt vokser automatisk i takt med prisstigningen", "Value": false}
+        ]
+    },{
+        "Spm": "Hva menes med rentesrente?",
+        "Alternativer":[
+            {"Tekst":"Renteinntekter på renteinntektene", "Value":true},
+            {"Tekst":"Bankens beste innskuddsrente", "Value":false},
+            {"Tekst":"Renten etter at du har betalt skatt", "Value":false}
+        ]
+    },{
+        "Spm":"Hva betyr det å ha avdragsfrihet på lånet?", 
+        "Alternativer":[
+            {"Tekst":"Du slipper å betale renter og avdrag på lånet", "Value":false},
+            {"Tekst":"Lånet ditt øker fordi du ikke betaler avdrag", "Value":false},
+            {"Tekst":"Du betaler renter, men utsetter betaling av avdr", "Value":true}
+        ]
+    },{
+        "Spm": "Spareavtale er en smart måte å spare på. Hva innebærer dette?",
+        "Alternativer":[
+            {"Tekst":"Jeg avtaler at banken overfører et fast, månedlig beløp fra bruks- til sparekontoen", "Value":true},
+            {"Tekst":"Jeg setter inn et stort beløp i banken, og lar det stå urørt frem til en bestemt dato ", "Value":false},
+            {"Tekst":"Jeg avtaler med banken at sparepengene kun kan brukes på et bestemt formål", "Value":false}
+        ]
+    },{
+        "Spm": "BSU står for Boligsparing for ungdom (under 34 år). Hvorfor er ordningen så populær?",
+        "Alternativer":[
+            {"Tekst":"Fordi det er den eneste måten ungdom kan spare på", "Value":false},
+            {"Tekst":"Fordi du må ha BSU for å kunne kjøpe egen bolig ", "Value":false},
+            {"Tekst":"Fordi BSU både gir en god rente og et stort skattefradrag", "Value":true}
+        ]
+    }
 ]}
