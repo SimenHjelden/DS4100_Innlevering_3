@@ -1,16 +1,19 @@
 ﻿(function () {
 
-    var wrapper, questionContainer, alternativesContainer, btnSubmit, btnNext, currentQuestion;
+    var wrapper, questionContainer, alternativesContainer, btnSubmit, btnNext, currentQuestion, htmlAlternatives;
 
     var init = function () {
         setObjects();
+        setEventHandlers();
         getJSON();
     }
 
     var setObjects = function () {
         questionContainer = $("#questionContainer");
         alternativesContainer = $("#alternativesContainer");
+        htmlAlternatives = $("#alternativesContainer ul li");
         btnSubmit = $("#btnSubmit");
+        btnNext = $("#btnNext");
         wrapper = $("#wrapper");
         currentQuestion = 0;
     }
@@ -19,7 +22,10 @@
         btnSubmit.click(function () {
         });
         btnNext.click(function () {
+        });
 
+        htmlAlternatives.click(function () {
+            $(this).css("background-color", "rgb(59, 110, 143)");
         });
     }
 
