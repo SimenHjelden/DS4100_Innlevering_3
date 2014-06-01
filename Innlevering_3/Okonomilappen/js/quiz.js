@@ -1,6 +1,6 @@
 ﻿(function () {
 
-    var question, alternatives, correctAnswer, btn = [], currentQuestion, points, score;
+    var question, alternatives, correctAnswer, btn = [], currentQuestion, points, score, altSelected, status;
 
     var init = function () {
         setObjects();
@@ -16,15 +16,22 @@
         currentQuestion = 0;
         score = $("#score");
         points = 0;
+        altSelected = false;
+        status = $("#status");
     }
 
     var setEventHandlers = function () {
         btn.next.click(function () {
-            clearContent();
-            currentQuestion++;
-            getJSON();
-            console.log("Klarert innhold og hentet neste spørsmål i json");
-            });
+            if (altSelected) {
+                clearContent();
+                currentQuestion++;
+                getJSON();
+                console.log("Klarert innhold og hentet neste spørsmål i json");
+            }
+            else {
+                setStatus();
+            }
+       });
     }
 
     var showScore = function () {
@@ -36,6 +43,10 @@
         question.children("h2").remove();
         alternatives.children("li").remove();
         btn.next.css("background-color", "rgb(127, 140, 141)")
+    }
+
+    var setStatus = function () {
+        status.html("Du kan ikke trykke på neste før du har valgt alternativ!");
     }
 
     var getJSON = function () {
@@ -83,7 +94,9 @@
                             console.log("feil");
                         }
                         $(".alternative").off();
+                        altSelected = true;
                         btn.next.css("background-color", "rgb(111, 38, 113)");
+                        status.css("display", "none");
                         showScore();
                     });
                 }

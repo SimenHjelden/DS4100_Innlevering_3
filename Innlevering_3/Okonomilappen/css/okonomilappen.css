@@ -40,6 +40,30 @@
     text-align:center;
 }
 
+#mainContent input[type=button] {
+    width:120px;
+    height:40px;
+    display:inline-block;
+    background-color: rgb(127, 140, 141);
+    border:none;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    color:rgb(255, 255, 255);
+}
+
+
+#mainContent input[type=button]:hover {
+    cursor:pointer;
+    opacity:0.7;
+}
+
+#mainContent #status {
+    font-family:Arial, sans-serif;
+    font-size:0.8em;
+    color: rgb(131, 30, 58);
+}
+
+
 #mainContent #questionContainer {
     margin:auto;
     width:600px;
@@ -66,6 +90,9 @@
     margin:20px auto;
 }
 
+
+
+
 #alternativesContainer ul{
     list-style:none;
     margin:auto;
@@ -90,22 +117,7 @@
     background-color:rgb(59, 110, 143); 
 }
 
-#mainContent input[type=button] {
-    width:120px;
-    height:40px;
-    display:inline-block;
-    background-color: rgb(127, 140, 141);
-    border:none;
-    font-family:Arial, sans-serif;
-    text-align:center;
-    color:rgb(255, 255, 255);
-}
 
-
-#mainContent input[type=button]:hover {
-    cursor:pointer;
-    opacity:0.7;
-}
 
 #mainFooter {
     width: 100%;
