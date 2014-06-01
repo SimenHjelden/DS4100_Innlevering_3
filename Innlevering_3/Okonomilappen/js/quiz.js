@@ -32,7 +32,11 @@ var setEventHandlers = function () {
                 console.log("Klarert innhold og hentet neste spørsmål i json");
             } else {
                 btn.next.hide();
-                score..addClass('finalScore');
+                score.css({
+                    float: "none", 
+                    'font-size': "1.4em"
+                });
+                score.html("Du fikk " + points + "/" + ((quizLength + 1) * 100) + " poeng");
             }
         }
         else {
