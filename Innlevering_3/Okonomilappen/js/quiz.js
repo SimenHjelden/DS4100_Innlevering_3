@@ -32,6 +32,7 @@ var setEventHandlers = function () {
                 console.log("Klarert innhold og hentet neste spørsmål i json");
             } else {
                 btn.next.hide();
+
             }
         }
         else {
@@ -68,7 +69,7 @@ var getJSON = function () {
 
         //Create question number
         var questionNumb = $("<p>", {
-            text: "Spørsmål " + currentQuestion + 1
+            text: "Spørsmål " + (currentQuestion + 1)
         });
 
         console.log("Adding questiontext: '" + item.Spm + "'");
