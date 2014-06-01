@@ -33,6 +33,12 @@
     color:rgb(128, 161, 182);
 }
 
+#mainContent .finalScore {
+    float:none;
+    margin:10px auto;
+    font-size:1.4em;
+}
+
 #mainContent {
     width:100%;
     height:100%;
