@@ -32,7 +32,7 @@ var setEventHandlers = function () {
                 console.log("Klarert innhold og hentet neste spørsmål i json");
             } else {
                 btn.next.hide();
-
+                score..addClass('finalScore');
             }
         }
         else {
