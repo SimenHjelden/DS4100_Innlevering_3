@@ -13,6 +13,7 @@ var setObjects = function () {
     question = $("#questionContainer");
     alternatives = $("#alternativesContainer ul");
     btn.next = $("#btnNext");
+    btn.reset = $("#btnReset");
     currentQuestion = 0;
     score = $("#score");
     points = 0;
@@ -43,7 +44,7 @@ var setEventHandlers = function () {
             status.css("display", "block");
             setStatus();
         }
-   });
+    });
 }
 
 var showScore = function () {
