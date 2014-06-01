@@ -23,7 +23,7 @@
             clearContent();
             currentQuestion++;
             getJSON();
-                console.log("i twerks : btn.next.click");
+            console.log("Klarert innhold og hentet neste spørsmål i json");
             });
     }
 
@@ -73,9 +73,6 @@
                     });
 
                     $(".alternative").click(function () {
-                        $(".alternative").css("background-color", "rgb(128, 161, 182)");
-                        $(this).css("background-color", "rgb(59, 110, 143)");
-                        $(".alternative").off();
                         if ($(this).text() === correctAnswer) {
                             $(this).css("background-color", "rgb(160, 207, 103)");
                             points += 100;
@@ -84,7 +81,8 @@
                         else {
                             $(this).css("background-color", "rgb(181, 30, 58)");
                             console.log("feil");
-                        }      
+                        }
+                        $(".alternative").off();
                         btn.next.css("background-color", "rgb(111, 38, 113)");
                         showScore();
                     });
